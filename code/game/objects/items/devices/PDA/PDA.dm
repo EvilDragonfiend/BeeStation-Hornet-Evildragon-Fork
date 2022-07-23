@@ -985,7 +985,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 			if(!id_check(user, idcard))
 				return
 			to_chat(user, "<span class='notice'>You put the ID into \the [src]'s slot.</span>")
-			if(((owner != id.registered_name) || (ownjob != id.assignment)) && (toggle_auto_update == PDA_TOGGLE_ON)) // auto-update by inserting your card
+			if(((owner != id.registered_name) || (ownjob != id.assignment)) && (toggle_auto_update == PDA_TOGGLE_ON && !id.assignment)) // auto-update by inserting your card
 				update_pda()
 			updateSelfDialog()//Update self dialog on success.
 
