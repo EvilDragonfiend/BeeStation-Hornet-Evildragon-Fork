@@ -22,6 +22,7 @@ AI MODULES
 	throw_range = 7
 	var/list/laws = list()
 	var/bypass_law_amt_check = 0
+	var/species_subject = "human"
 	materials = list(/datum/material/gold = 50)
 
 /obj/item/aiModule/examine(var/mob/user as mob)
@@ -196,15 +197,20 @@ AI MODULES
 
 /obj/item/aiModule/zeroth/oneHuman
 	name = "'OneHuman' AI Module"
+	var/targetSubject = "human"
 	var/targetName = ""
 	laws = list("Only SUBJECT is human.")
 
 /obj/item/aiModule/zeroth/oneHuman/attack_self(mob/user)
-	var/targName = stripped_input(user, "Please enter the subject who is the only human.", "Who?", user.real_name,MAX_NAME_LEN)
-	if(!targName)
+	var/tempSubject = stripped_input(user, "Please enter the only-species subject (i.e. human)", "Which speices?", targetSubject)
+	if(!tempSubject)
 		return
-	targetName = targName
-	laws[1] = "Only [targetName] is human"
+	targetSubject = tempSubject
+	var/tempName = stripped_input(user, "Please enter the subject who is the only [targetSubject].", "Who?", user.real_name,MAX_NAME_LEN)
+	if(!tempName)
+		return
+	targetName = tempName
+	laws[1] = "Only [targetName] is [targetSubject]"
 	..()
 
 /obj/item/aiModule/zeroth/oneHuman/install(datum/ai_laws/law_datum, mob/user)
@@ -382,21 +388,22 @@ AI MODULES
 	..()
 
 
+/obj/item/aiModule/core/full/proc/set_laws_subject(var/mob/user as mob)
+	var/targName = stripped_input(user, "Please enter a new subject that asimov is concerned with.", "Asimov to whom?", subject, MAX_NAME_LEN)
+	if(!targName)
+		return
+	D.laws_subject = p_grammar_correction_species(targName)
+	D.rebuild_laws()
+	laws = D.inherent
+
 /******************** Asimov ********************/
 
 /obj/item/aiModule/core/full/asimov
 	name = "'Asimov' Core AI Module"
 	law_id = "asimov"
-	var/subject = "human being"
 
 /obj/item/aiModule/core/full/asimov/attack_self(var/mob/user as mob)
-	var/targName = stripped_input(user, "Please enter a new subject that asimov is concerned with.", "Asimov to whom?", subject, MAX_NAME_LEN)
-	if(!targName)
-		return
-	subject = p_grammar_correction_species(targName)
-	laws = list("You may not injure a [subject] or, through inaction, allow a [subject] to come to harm.",\
-				"You must obey orders given to you by [p_pluralize_species(subject)], except where such orders would conflict with the First Law.",\
-				"You must protect your own existence as long as such does not conflict with the First or Second Law.")
+	set_laws_subject(user)
 	..()
 
 /******************** Asimov++ *********************/
@@ -405,6 +412,9 @@ AI MODULES
 	name = "'Asimov++' Core AI Module"
 	law_id = "asimovpp"
 
+/obj/item/aiModule/core/full/asimovpp/attack_self(var/mob/user as mob)
+	set_laws_subject(user)
+	..()
 
 /******************** Corporate ********************/
 
@@ -464,6 +474,9 @@ AI MODULES
 	name = "'Antimov' Core AI Module"
 	law_id = "antimov"
 
+/obj/item/aiModule/core/full/antimov/attack_self(var/mob/user as mob)
+	set_laws_subject(user)
+	..()
 
 /******************** Freeform Core ******************/
 

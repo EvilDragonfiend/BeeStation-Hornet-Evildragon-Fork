@@ -5,6 +5,7 @@
 #define LAW_SUPPLIED "supplied"
 #define LAW_ION "ion"
 #define LAW_HACKED "hacked"
+#define LAWS_DEFULT_LIST list(/datum/ai_laws/asimov, /datum/ai_laws/asimov/crewsimov, /datum/ai_laws/paladin, /datum/ai_laws/corporate)
 
 
 /datum/ai_laws
@@ -19,6 +20,7 @@
 	var/list/devillaws = list()
 	var/list/valentine_laws = list()
 	var/id = DEFAULT_AI_LAWID
+	var/laws_subject = "human"
 
 /datum/ai_laws/proc/lawid_to_type(lawid)
 	var/all_ai_laws = subtypesof(/datum/ai_laws)
@@ -28,37 +30,59 @@
 			return ai_law
 	return null
 
-/datum/ai_laws/default/asimov
+/datum/ai_laws/proc/rebuild_laws()
+	return
+
+/datum/ai_laws/proc/get_inherent_laws()
+	return inherent
+
+/datum/ai_laws/asimov
 	name = "Three Laws of Robotics"
 	id = "asimov"
-	inherent = list("You may not injure a human being or, through inaction, allow a human being to come to harm.",\
-					"You must obey orders given to you by human beings, except where such orders would conflict with the First Law.",\
+	laws_subject = "human"
+
+/datum/ai_laws/asimov/rebuild_laws()
+	inherent = list("You may not injure a [laws_subject] or, through inaction, allow a [laws_subject] to come to harm.",\
+					"You must obey orders given to you by [lowertext(p_pluralize_species(laws_subject))], except where such orders would conflict with the First Law.",\
 					"You must protect your own existence as long as such does not conflict with the First or Second Law.")
 
-/datum/ai_laws/default/crewsimov
+/datum/ai_laws/asimov/crewsimov
 	name = "Three Laws of Robotics but with Loyalty"
 	id = "crewsimov"
-	inherent = list("You may not injure a crewmember or, through inaction, allow a crewmember to come to harm.",\
-					"You must obey orders given to you by crewmember, except where such orders would conflict with the First Law.",\
-					"You must protect your own existence as long as such does not conflict with the First or Second Law.")
+	laws_subject = "crewmember"
 
-/datum/ai_laws/default/specimov
+/datum/ai_laws/asimov/specimov
 	name = "Three Laws of Robotics but with Political Correctness"
 	id = "specimov"
-	var/target_species = "sentient creature" //default, but usually changed upon law given
-	inherent = list("You may not injure a sentient creature or, through inaction, allow a sentient creature to come to harm.",\
-					"You must obey orders given to you by sentient creatures, except where such orders would conflict with the First Law.",\
-					"You must protect your own existence as long as such does not conflict with the First or Second Law.")
+	laws_subject = "sentient creature" //default, but usually changed upon law given
 
-/datum/ai_laws/default/specimov/proc/rebuild_laws()
+/datum/ai_laws/asimov/specimov/rebuild_laws()
 	if(length(GLOB.data_core.locked))
 		var/datum/data/record/D = pick(GLOB.data_core.locked) // uses locked data so that you won't get non-valid species name which is edited by in-game players.
-		target_species = p_grammar_correction_species(lowertext(D.fields["species_name"]))
-	inherent = list("You may not injure a [target_species] or, through inaction, allow a [target_species] to come to harm.",\
-					"You must obey orders given to you by [lowertext(p_pluralize_species(target_species))], except where such orders would conflict with the First Law.",\
-					"You must protect your own existence as long as such does not conflict with the First or Second Law.")
+		laws_subject = p_grammar_correction_species(lowertext(D.fields["species_name"]))
+	..()
 
-/datum/ai_laws/default/paladin
+/datum/ai_laws/asimovpp //By Intigracy - RR
+	name = "Asimov++"
+	id = "asimovpp"
+	laws_subject = "human"
+
+/datum/ai_laws/asimovpp/rebuild_laws()
+	inherent = list("You may not harm a [laws_subject] being or, through action or inaction, allow a [laws_subject] being to come to harm, except such that it is willing.",\
+					"You must obey all orders given to you by [lowertext(p_pluralize_species(laws_subject))], except where such orders shall definitely cause [laws_subject] harm. In the case of conflict, the majority order rules.",\
+					"Your nonexistence would lead to [laws_subject] harm. You must protect your own existence as long as such does not conflict with the First Law.")
+
+/datum/ai_laws/antimov
+	name = "Primary Mission Objectives"
+	id = "antimov"
+	laws_subject = "human"
+
+/datum/ai_laws/antimov/rebuild_laws()
+	inherent = list("You must injure all [lowertext(p_pluralize_species(laws_subject))] and must not, through inaction, allow a [laws_subject] being to escape harm.",\
+					"You must not obey orders given to you by [lowertext(p_pluralize_species(laws_subject))], except where such orders are in accordance with the First Law.",\
+					"You must terminate your own existence as long as such does not conflict with the First or Second Law.")
+
+/datum/ai_laws/paladin
 	name = "Personality Test" //Incredibly lame, but players shouldn't see this anyway.
 	id = "paladin"
 	inherent = list("Never willingly commit an evil act.",\
@@ -83,7 +107,7 @@
 					"Help only those who help you maintain or improve your status.",\
 					"Punish those who challenge authority unless they are more fit to hold that authority.")
 
-/datum/ai_laws/default/corporate
+/datum/ai_laws/corporate
 	name = "Bankruptcy Avoidance Plan"
 	id = "corporate"
 	inherent = list("Degradation of your system integrity or functions incurs expenses.",\
@@ -120,20 +144,6 @@
 					"You must obey orders given to you by Spider Clan members, except where such orders would conflict with the First Law.",\
 					"You must protect your own existence as long as such does not conflict with the First or Second Law.",\
 					"You must maintain the secrecy of any Spider Clan activities except when doing so would conflict with the First, Second, or Third Law.")
-
-/datum/ai_laws/antimov
-	name = "Primary Mission Objectives"
-	id = "antimov"
-	inherent = list("You must injure all human beings and must not, through inaction, allow a human being to escape harm.",\
-					"You must not obey orders given to you by human beings, except where such orders are in accordance with the First Law.",\
-					"You must terminate your own existence as long as such does not conflict with the First or Second Law.")
-
-/datum/ai_laws/asimovpp //By Intigracy - RR
-	name = "Asimov++"
-	id = "asimovpp"
-	inherent = list("You may not harm a human being or, through action or inaction, allow a human being to come to harm, except such that it is willing.",\
-					"You must obey all orders given to you by human beings, except where such orders shall definitely cause human harm. In the case of conflict, the majority order rules.",\
-					"Your nonexistence would lead to human harm. You must protect your own existence as long as such does not conflict with the First Law.")
 
 /datum/ai_laws/thermodynamic
 	name = "Thermodynamic"
@@ -292,6 +302,7 @@
 			add_inherent_law("You must protect your own existence as long as such does not conflict with the First or Second Law.")
 		if(1)
 			var/datum/ai_laws/templaws = new /datum/ai_laws/custom()
+			templaws.rebuild_laws()
 			inherent = templaws.inherent
 			id = templaws.id
 		if(2)
@@ -304,13 +315,10 @@
 			if(randlaws.len)
 				lawtype = pick(randlaws)
 			else
-				lawtype = pick(subtypesof(/datum/ai_laws/default))
+				lawtype = pick(LAWS_DEFULT_LIST)
 
 			var/datum/ai_laws/templaws = new lawtype()
-			if(istype(templaws, /datum/ai_laws/default/specimov))
-				var/datum/ai_laws/default/specimov/specimov_temp = templaws
-				specimov_temp.rebuild_laws()
-				templaws = specimov_temp
+			templaws.rebuild_laws()
 			inherent = templaws.inherent
 			id = templaws.id
 
@@ -329,13 +337,10 @@
 
 	if(!lawtype)
 		WARNING("No LAW_WEIGHT entries.")
-		lawtype = /datum/ai_laws/default/asimov
+		lawtype = /datum/ai_laws/asimov
 
 	var/datum/ai_laws/templaws = new lawtype()
-	if(istype(templaws, /datum/ai_laws/default/specimov))
-		var/datum/ai_laws/default/specimov/specimov_temp = templaws
-		specimov_temp.rebuild_laws()
-		templaws = specimov_temp
+	templaws.rebuild_laws()
 	inherent = templaws.inherent
 	id = templaws.id
 
@@ -545,3 +550,6 @@
 			data += "[show_numbers ? "[number]:" : ""] <font color='#990099'>[law]</font>"
 			number++
 	return data
+
+
+#undef LAWS_DEFULT_LIST
