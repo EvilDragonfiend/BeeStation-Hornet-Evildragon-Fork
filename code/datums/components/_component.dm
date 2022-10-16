@@ -223,6 +223,16 @@
 	if(!length(.))
 		return list(.)
 
+// returns multiple components as a list type return. mostly used by knowledge system
+/datum/proc/GetComponentAsList(datum/component/c_type)
+	var/list/datum_list = list()
+	for(var/each in datum_components)
+		if(istype(each, c_type))
+			datum_list += each
+	if(!datum_list)
+		return null
+	return datum_list
+
 /datum/proc/_AddComponent(list/raw_args)
 	var/new_type = raw_args[1]
 	var/datum/component/nt = new_type
