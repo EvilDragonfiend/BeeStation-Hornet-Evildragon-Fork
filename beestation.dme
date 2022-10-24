@@ -218,6 +218,7 @@
 #include "code\__HELPERS\qdel.dm"
 #include "code\__HELPERS\radiation.dm"
 #include "code\__HELPERS\radio.dm"
+#include "code\__HELPERS\random_generator_rand_epg.dm"
 #include "code\__HELPERS\randoms.dm"
 #include "code\__HELPERS\records.dm"
 #include "code\__HELPERS\ref.dm"
