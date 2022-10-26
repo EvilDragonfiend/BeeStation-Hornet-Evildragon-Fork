@@ -37,7 +37,6 @@
 	paycheck_department = ACCOUNT_SRV
 
 	display_order = JOB_DISPLAY_ORDER_HEAD_OF_PERSONNEL
-	bounty_types = CIV_JOB_RANDOM
 	departments = DEPARTMENT_COMMAND | DEPARTMENT_SERVICE
 	rpg_title = "Guild Questgiver"
 

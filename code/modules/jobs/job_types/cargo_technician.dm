@@ -18,7 +18,6 @@
 	paycheck_department = ACCOUNT_CAR
 
 	display_order = JOB_DISPLAY_ORDER_CARGO_TECHNICIAN
-	bounty_types = CIV_JOB_RANDOM
 	departments = DEPARTMENT_CARGO
 	rpg_title = "Merchantman"
 
