@@ -15,7 +15,9 @@
 	if(A.panel_open)
 		return TRUE
 
-/datum/wires/autolathe/get_status()
+/datum/wires/autolathe/get_status(mob/user)
+	if(!..())
+		return list()
 	var/obj/machinery/modular_fabricator/autolathe/A = holder
 	var/list/status = list()
 	status += "The red light is [A.disabled ? "on" : "off"]."

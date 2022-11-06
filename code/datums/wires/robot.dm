@@ -16,7 +16,9 @@
 	if(R.wiresexposed)
 		return TRUE
 
-/datum/wires/robot/get_status()
+/datum/wires/robot/get_status(mob/user)
+	if(!..())
+		return list()
 	var/mob/living/silicon/robot/R = holder
 	var/list/status = list()
 	status += "The law sync module is [R.lawupdate ? "on" : "off"]."

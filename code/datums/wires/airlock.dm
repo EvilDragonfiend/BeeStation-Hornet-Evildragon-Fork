@@ -21,7 +21,9 @@
 	if(A.panel_open)
 		return TRUE
 
-/datum/wires/airlock/get_status()
+/datum/wires/airlock/get_status(mob/user)
+	if(!..())
+		return list()
 	var/obj/machinery/door/airlock/A = holder
 	var/list/status = list()
 	status += "The door bolts [A.locked ? "have fallen!" : "look up."]"
@@ -82,7 +84,7 @@
 				A.update_icon()
 			if(WIRE_ZAP1, WIRE_ZAP2) // Doors have a lot of power coursing through them, even a multitool can be overloaded on the wrong wires
 				if(isliving(usr))
-					A.shock(usr, 100) 
+					A.shock(usr, 100)
 	ui_update()
 	A.ui_update()
 
@@ -96,8 +98,8 @@
 
 /datum/wires/airlock/on_cut(wire, mend)
 	var/obj/machinery/door/airlock/A = holder
-	if(isliving(usr) && A.hasPower())	
-		A.shock(usr, 100) //Cutting wires directly on powered doors without protection is not advised. 
+	if(isliving(usr) && A.hasPower())
+		A.shock(usr, 100) //Cutting wires directly on powered doors without protection is not advised.
 	switch(wire)
 		if(WIRE_POWER1, WIRE_POWER2) // Cut to loose power, repair all to gain power.
 			if(mend && !is_cut(WIRE_POWER1) && !is_cut(WIRE_POWER2))

@@ -14,7 +14,9 @@
 	if(S.panel_open)
 		return TRUE
 
-/datum/wires/dna_scanner/get_status()
+/datum/wires/dna_scanner/get_status(mob/user)
+	if(!..())
+		return list()
 	var/obj/machinery/dna_scannernew/S = holder
 	var/list/status = list()
 	status += "A [S.ignore_id ? "yellow" : "purple"] light is on."

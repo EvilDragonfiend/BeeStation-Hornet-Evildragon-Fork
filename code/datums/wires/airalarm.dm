@@ -23,7 +23,9 @@
 	if(A.panel_open && A.buildstage == 2)
 		return TRUE
 
-/datum/wires/airalarm/get_status()
+/datum/wires/airalarm/get_status(mob/user)
+	if(!..())
+		return list()
 	var/obj/machinery/airalarm/A = holder
 	var/list/status = list()
 	status += "The interface light is [A.locked ? "red" : "green"]."

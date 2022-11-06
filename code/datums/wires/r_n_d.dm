@@ -15,7 +15,9 @@
 	if(R.panel_open)
 		return TRUE
 
-/datum/wires/rnd/get_status()
+/datum/wires/rnd/get_status(mob/user)
+	if(!..())
+		return list()
 	var/obj/machinery/rnd/R = holder
 	var/list/status = list()
 	status += "The red light is [R.disabled ? "off" : "on"]."

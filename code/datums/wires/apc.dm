@@ -15,7 +15,9 @@
 	if(A.panel_open && !A.opened)
 		return TRUE
 
-/datum/wires/apc/get_status()
+/datum/wires/apc/get_status(mob/user)
+	if(!..())
+		return list()
 	var/obj/machinery/power/apc/A = holder
 	var/list/status = list()
 	status += "The interface light is [A.locked ? "red" : "green"]."

@@ -88,7 +88,9 @@
 	if(P.open && P.bomb)
 		return TRUE
 
-/datum/wires/explosive/pizza/get_status()
+/datum/wires/explosive/pizza/get_status(mob/user)
+	if(!..())
+		return list()
 	var/obj/item/pizzabox/P = holder
 	var/list/status = list()
 	status += "The red light is [P.bomb_active ? "on" : "off"]."

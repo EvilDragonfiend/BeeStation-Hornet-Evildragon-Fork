@@ -15,7 +15,9 @@
 	if(A.panel_open && A.buildstage == 2)
 		return TRUE
 
-/datum/wires/advanced_airlock_controller/get_status()
+/datum/wires/advanced_airlock_controller/get_status(mob/user)
+	if(!..())
+		return list()
 	var/obj/machinery/advanced_airlock_controller/A = holder
 	var/list/status = list()
 	status += "The interface light is [A.locked ? "red" : "green"]."

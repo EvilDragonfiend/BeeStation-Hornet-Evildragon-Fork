@@ -17,7 +17,9 @@
 	if(V.panel_open)
 		return TRUE
 
-/datum/wires/vending/get_status()
+/datum/wires/vending/get_status(mob/user)
+	if(..())
+		return list()
 	var/obj/machinery/vending/V = holder
 	var/list/status = list()
 	status += "The orange light is [V.seconds_electrified ? "on" : "off"]."

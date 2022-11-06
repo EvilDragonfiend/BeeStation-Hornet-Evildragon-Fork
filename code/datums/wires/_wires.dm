@@ -202,7 +202,10 @@
 /datum/wires/proc/interactable(mob/user)
 	return TRUE
 
-/datum/wires/proc/get_status()
+/datum/wires/proc/get_status(mob/user)
+	if(iscarbon(user)) // let borgs can see
+		for(var/obj/item/multitool/I in user.held_items) // no need to typecheck, because `for` itself is typecheck
+			return TRUE
 	return list()
 
 /datum/wires/proc/on_cut(wire, mend = FALSE)
@@ -264,7 +267,9 @@
 			"attached" = is_attached(color)
 		)))
 	data["wires"] = payload
-	data["status"] = get_status()
+	data["status"] = get_status(user)
+	if(!islist(data["status"]))
+		data["status"] = null
 	return data
 
 /datum/wires/ui_act(action, params)

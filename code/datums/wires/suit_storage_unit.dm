@@ -15,7 +15,9 @@
 	if(SSU.panel_open)
 		return TRUE
 
-/datum/wires/suit_storage_unit/get_status()
+/datum/wires/suit_storage_unit/get_status(mob/user)
+	if(..())
+		return list()
 	var/obj/machinery/suit_storage_unit/SSU = holder
 	var/list/status = list()
 	status += "The UV bulb is [SSU.uv_super ? "glowing" : "dim"]."
