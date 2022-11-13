@@ -1,7 +1,6 @@
-//wip wip wup
 /obj/structure/mirror
-	name = "mirror"
-	desc = "Mirror mirror on the wall, who's the most robust of them all?"
+	name = "mirror (code abstract type)"
+	desc = "do not use this in-game."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "mirror"
 	density = FALSE
@@ -10,12 +9,13 @@
 	integrity_failure = 100
 	flags_ricochet = RICOCHET_SHINY
 	layer = ABOVE_WINDOW_LAYER
-	var/magical = FALSE
 
+// abstract mirror basic codes
 /obj/structure/mirror/Initialize(mapload)
 	. = ..()
 	if(icon_state == "mirror_broke" && !broken)
 		obj_break(null, mapload)
+
 
 /obj/structure/mirror/attack_hand(mob/user)
 	. = ..()
@@ -24,30 +24,6 @@
 	if(broken || !Adjacent(user))
 		return
 
-	if(ishuman(user) && !magical)
-		var/mob/living/carbon/human/H = user
-
-		//see code/modules/mob/dead/new_player/preferences.dm at approx line 545 for comments!
-		//this is largely copypasted from there.
-
-		//handle facial hair (if necessary)
-		if(H.gender == MALE)
-			var/new_style = input(user, "Select a facial hair style", "Grooming")  as null|anything in GLOB.facial_hair_styles_list
-			if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-				return	//no tele-grooming
-			if(new_style)
-				H.facial_hair_style = new_style
-		else
-			H.facial_hair_style = "Shaved"
-
-		//handle normal hair
-		var/new_style = input(user, "Select a hair style", "Grooming")  as null|anything in GLOB.hair_styles_list
-		if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-			return	//no tele-grooming
-		if(new_style)
-			H.hair_style = new_style
-
-		H.update_hair()
 
 /obj/structure/mirror/examine_status(mob/user)
 	if(broken)
@@ -95,12 +71,49 @@
 		if(BURN)
 			playsound(src, 'sound/effects/hit_on_shattered_glass.ogg', 70, 1)
 
+// non-magical mirror code
+/obj/structure/mirror/default
+	name = "mirror"
+	desc = "Mirror mirror on the wall, who's the most robust of them all?"
+
+/obj/structure/mirror/default/attack_hand(mob/user)
+	. = ..()
+	if(.)
+		return
+	if(broken || !Adjacent(user) || ishuman(user))
+		return
+
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+
+		//see code/modules/mob/dead/new_player/preferences.dm at approx line 545 for comments!
+		//this is largely copypasted from there.
+
+		//handle facial hair (if necessary)
+		if(H.gender == MALE)
+			var/new_style = input(user, "Select a facial hair style", "Grooming")  as null|anything in GLOB.facial_hair_styles_list
+			if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+				return	//no tele-grooming
+			if(new_style)
+				H.facial_hair_style = new_style
+		else
+			H.facial_hair_style = "Shaved"
+
+		//handle normal hair
+		var/new_style = input(user, "Select a hair style", "Grooming")  as null|anything in GLOB.hair_styles_list
+		if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+			return	//no tele-grooming
+		if(new_style)
+			H.hair_style = new_style
+
+		H.update_hair()
+
+// magical mirror code (that shouldn't work in non-magical mirror)
 /obj/structure/mirror/magic
 	name = "magic mirror"
 	desc = "Turn and face the strange... face."
 	icon_state = "magic_mirror"
 	var/list/choosable_races = list()
-	magical = TRUE
 
 /obj/structure/mirror/magic/Initialize(mapload)
 	. = ..()
@@ -126,7 +139,7 @@
 	. = ..()
 	if(.)
 		return
-	if(!ishuman(user))
+	if(broken || !Adjacent(user) || ishuman(user))
 		return
 
 	var/mob/living/carbon/human/H = user
@@ -249,7 +262,7 @@
 
 
 //basically stolen from human_defense.dm
-/obj/structure/mirror/bullet_act(obj/item/projectile/P)
+/obj/structure/mirror/default/bullet_act(obj/item/projectile/P)
 	if(P.reflectable & REFLECT_NORMAL)
 		if(P.starting)
 			var/new_x = P.starting.x + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)

@@ -20,7 +20,7 @@
 /obj/item/toy/katana,
 /obj/item/clothing/shoes/sandal,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 26
 	},
 /obj/effect/turf_decal/tile/neutral,

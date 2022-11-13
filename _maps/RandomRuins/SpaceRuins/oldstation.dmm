@@ -3834,7 +3834,7 @@
 /area/ruin/space/has_grav/ancientstation/deltacorridor)
 "lt" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	name = "dusty mirror";
 	pixel_y = 28
 	},
@@ -4420,7 +4420,7 @@
 /area/ruin/space/has_grav/ancientstation/rnd)
 "FH" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	name = "dusty mirror";
 	pixel_x = -26
 	},
@@ -4482,7 +4482,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	name = "dusty mirror";
 	pixel_x = 26
 	},
@@ -4831,7 +4831,7 @@
 /area/ruin/space/has_grav/ancientstation/comm)
 "SP" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	name = "dusty mirror";
 	pixel_x = -26
 	},

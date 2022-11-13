@@ -727,7 +727,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/item/soap/nanotrasen,
@@ -2006,7 +2006,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 26
 	},
 /obj/structure/cable/yellow{

@@ -74,7 +74,7 @@
 /turf/open/floor/plasteel/cafeteria,
 /area/template_noop)
 "s" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /obj/structure/table/wood,

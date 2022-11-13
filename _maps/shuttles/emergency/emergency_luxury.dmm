@@ -61,7 +61,7 @@
 /turf/open/floor/mineral/gold,
 /area/shuttle/escape/luxury)
 "al" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 32
 	},
 /turf/open/floor/mineral/gold,

@@ -6251,7 +6251,7 @@
 /obj/structure/table/wood,
 /obj/item/book/manual/wiki/security_space_law,
 /obj/item/hand_tele,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -26
 	},
 /obj/machinery/light,
@@ -21866,7 +21866,7 @@
 /obj/structure/toilet{
 	dir = 8
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /obj/machinery/button/door{
@@ -21899,7 +21899,7 @@
 /obj/structure/toilet{
 	dir = 8
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /obj/machinery/button/door{
@@ -41227,7 +41227,7 @@
 /turf/open/floor/plasteel/dark,
 /area/science/mixing)
 "dlT" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 28
 	},
 /obj/structure/sink{
@@ -42996,7 +42996,7 @@
 	pixel_x = 24;
 	pixel_y = 24
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 26
 	},
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
@@ -44911,7 +44911,7 @@
 /turf/open/floor/plasteel/dark,
 /area/medical/morgue)
 "eLw" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 28
 	},
 /obj/structure/sink{
@@ -50312,7 +50312,7 @@
 "gYR" = (
 /obj/structure/table/wood,
 /obj/effect/turf_decal/stripes/corner,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 26
 	},
 /obj/item/clipboard,
@@ -52269,7 +52269,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = -32
 	},
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
@@ -61245,7 +61245,7 @@
 /obj/item/folder/white,
 /obj/item/flashlight/pen,
 /obj/item/clothing/neck/stethoscope,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 26
 	},
 /turf/open/floor/plasteel/freezer,
@@ -78744,7 +78744,7 @@
 	dir = 1;
 	name = "bar camera"
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = -32
 	},
 /obj/machinery/light{
@@ -79113,7 +79113,7 @@
 /obj/machinery/light_switch{
 	pixel_x = -24
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 28
 	},
 /obj/structure/disposalpipe/trunk,
@@ -81119,7 +81119,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 26
 	},
 /obj/effect/turf_decal/tile/purple,
@@ -81760,7 +81760,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 32
 	},
 /obj/structure/sink{
@@ -83002,7 +83002,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -26
 	},
 /obj/item/reagent_containers/food/snacks/pie/cream,
@@ -90016,7 +90016,7 @@
 	dir = 8;
 	name = "emergency shower"
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 26
 	},
 /obj/effect/turf_decal/stripes/corner,
@@ -90061,7 +90061,7 @@
 	dir = 4;
 	name = "emergency shower"
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 28
 	},
 /obj/structure/sink{

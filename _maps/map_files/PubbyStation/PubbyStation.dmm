@@ -4834,7 +4834,7 @@
 	pixel_x = -12;
 	pixel_y = 2
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /turf/open/floor/plasteel/freezer,
@@ -6331,7 +6331,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /turf/open/floor/plasteel/freezer,
@@ -14693,7 +14693,7 @@
 	dir = 9
 	},
 /obj/item/cardboard_cutout,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28;
 	pixel_y = -2
 	},
@@ -20184,7 +20184,7 @@
 	pixel_x = 24;
 	pixel_y = 24
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28;
 	pixel_y = -2
 	},
@@ -21298,7 +21298,7 @@
 	dir = 4
 	},
 /obj/structure/sink,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 26
 	},
 /obj/effect/turf_decal/tile/purple/anticorner/contrasted{
@@ -43657,7 +43657,7 @@
 	dir = 8;
 	light_color = "#d8b1b1"
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /obj/machinery/camera{
@@ -57211,7 +57211,7 @@
 /obj/item/clothing/neck/stethoscope{
 	layer = 3.2
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/machinery/light/small{

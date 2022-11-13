@@ -6674,7 +6674,7 @@
 /area/medical/medbay/aft)
 "bTc" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 29
 	},
 /turf/open/floor/carpet/purple,
@@ -10673,7 +10673,7 @@
 /obj/machinery/door/window/southleft{
 	name = "Cloning Shower"
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 30
 	},
 /obj/effect/turf_decal/tile/blue/fourcorners/contrasted,
@@ -11096,7 +11096,7 @@
 /turf/open/floor/engine,
 /area/engine/engine_room)
 "dxu" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/machinery/light/small{
@@ -18523,7 +18523,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/machinery/camera/autoname{
@@ -46593,7 +46593,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/structure/extinguisher_cabinet{
@@ -54502,7 +54502,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /turf/open/floor/plasteel/white,
@@ -56680,7 +56680,7 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
 "sGH" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 30
 	},
 /obj/structure/table/wood,
@@ -57975,7 +57975,7 @@
 /turf/open/floor/plasteel/white,
 /area/crew_quarters/toilet)
 "tcS" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = -32
 	},
 /obj/structure/cable/yellow{

@@ -474,7 +474,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 32
 	},
 /turf/open/floor/plasteel/showroomfloor,
@@ -521,7 +521,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 32
 	},
 /turf/open/floor/plasteel/showroomfloor,
@@ -568,7 +568,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 32
 	},
 /turf/open/floor/plasteel/showroomfloor,
@@ -615,7 +615,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 32
 	},
 /turf/open/floor/plasteel/showroomfloor,
@@ -1057,7 +1057,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 32
 	},
 /turf/open/floor/plasteel/showroomfloor,
@@ -1118,7 +1118,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 32
 	},
 /turf/open/floor/plasteel/showroomfloor,
@@ -2381,7 +2381,7 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/hotel/workroom)
 "hB" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = -32
 	},
 /turf/open/floor/plasteel/dark,
@@ -3281,7 +3281,7 @@
 /turf/open/floor/plasteel/freezer,
 /area/ruin/space/has_grav/hotel/pool)
 "ln" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 32
 	},
 /obj/structure/sink{
@@ -3469,7 +3469,7 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/ruin/space/has_grav/hotel/pool)
 "mc" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 32
 	},
 /obj/structure/sink{
@@ -3947,7 +3947,7 @@
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/hotel/power)
 "yX" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 32
 	},
 /obj/effect/turf_decal/tile/red/fourcorners/contrasted,

@@ -3280,7 +3280,7 @@
 /obj/structure/urinal{
 	pixel_y = 29
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -3468,7 +3468,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	icon_state = "mirror_broke";
 	pixel_x = 28
 	},

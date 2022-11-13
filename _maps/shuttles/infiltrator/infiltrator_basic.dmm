@@ -769,7 +769,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 30
 	},
 /obj/effect/turf_decal/tile/neutral/fourcorners/contrasted,

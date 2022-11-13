@@ -4265,7 +4265,7 @@
 /area/maintenance/port/fore)
 "awI" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -26
 	},
 /obj/structure/sink{
@@ -8833,7 +8833,7 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "aTv" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /turf/open/floor/plasteel/cafeteria,
@@ -25950,7 +25950,7 @@
 /turf/open/floor/plasteel,
 /area/crew_quarters/toilet/restrooms)
 "cFf" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -26
 	},
 /obj/structure/sink{
@@ -26465,7 +26465,7 @@
 /area/gateway)
 "cGH" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -26
 	},
 /obj/structure/sink{
@@ -30591,7 +30591,7 @@
 /turf/open/floor/plasteel,
 /area/medical/medbay/central)
 "dbu" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 26
 	},
 /obj/structure/sink{
@@ -32227,7 +32227,7 @@
 /obj/item/folder/white,
 /obj/item/flashlight/pen,
 /obj/item/clothing/neck/stethoscope,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /turf/open/floor/plasteel/freezer,
@@ -33627,7 +33627,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 26;
 	pixel_y = 32
 	},
@@ -34974,7 +34974,7 @@
 	pixel_y = 4
 	},
 /obj/structure/table/glass,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = -28
 	},
 /turf/open/floor/plasteel/white,
@@ -36419,7 +36419,7 @@
 /obj/structure/sign/warning/nosmoking{
 	pixel_y = -32
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/effect/turf_decal/bot,
@@ -43102,7 +43102,7 @@
 /area/bridge)
 "fin" = (
 /obj/structure/dresser,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 26
 	},
 /obj/effect/turf_decal/tile/blue/opposingcorners{
@@ -46253,7 +46253,7 @@
 /turf/open/floor/wood,
 /area/vacant_room/office)
 "gnI" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /obj/structure/table/reinforced,
@@ -55556,7 +55556,7 @@
 /area/hallway/secondary/entry)
 "jMA" = (
 /obj/machinery/door/window/eastleft,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /obj/machinery/shower{
@@ -72119,7 +72119,7 @@
 	dir = 8;
 	pixel_x = -12
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -75288,7 +75288,7 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
 "qAU" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /obj/effect/turf_decal/tile/red/opposingcorners,
@@ -90562,7 +90562,7 @@
 /obj/item/folder/white,
 /obj/item/flashlight/pen,
 /obj/item/clothing/neck/stethoscope,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /turf/open/floor/plasteel/freezer,
@@ -96749,7 +96749,7 @@
 /turf/open/floor/plasteel,
 /area/science/research)
 "yiK" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 26
 	},
 /obj/structure/sink{

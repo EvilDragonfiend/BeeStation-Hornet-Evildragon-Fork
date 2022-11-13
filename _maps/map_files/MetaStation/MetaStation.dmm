@@ -7015,7 +7015,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /turf/open/floor/plasteel/freezer,
@@ -15714,7 +15714,7 @@
 /turf/open/floor/wood,
 /area/vacant_room/office)
 "bzB" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /turf/open/floor/plating,
@@ -17614,7 +17614,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/effect/turf_decal/tile/blue/anticorner/contrasted,
@@ -19241,7 +19241,7 @@
 /area/crew_quarters/kitchen)
 "bPb" = (
 /obj/structure/table/wood,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /obj/item/lipstick/black,
@@ -27643,7 +27643,7 @@
 /obj/item/folder/white,
 /obj/item/flashlight/pen,
 /obj/item/clothing/neck/stethoscope,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = -28
 	},
 /turf/open/floor/plasteel/freezer,
@@ -27653,7 +27653,7 @@
 /obj/item/folder/white,
 /obj/item/flashlight/pen,
 /obj/item/clothing/neck/stethoscope,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 28
 	},
 /turf/open/floor/plasteel/freezer,
@@ -38259,7 +38259,7 @@
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "fXe" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/machinery/shower{
@@ -50873,7 +50873,7 @@
 	pixel_y = -25;
 	specialfunctions = 4
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /obj/machinery/light/small,
@@ -65542,7 +65542,7 @@
 /obj/machinery/door/window/southleft{
 	name = "Cloning Shower"
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /obj/effect/turf_decal/tile/neutral/fourcorners/contrasted,
@@ -74329,7 +74329,7 @@
 /turf/open/floor/plasteel/dark,
 /area/science/shuttledock)
 "wAr" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /obj/machinery/shower{
@@ -75689,7 +75689,7 @@
 /turf/open/floor/plasteel,
 /area/crew_quarters/heads/chief)
 "xeJ" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 28
 	},
 /obj/structure/sink{

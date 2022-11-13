@@ -100,7 +100,7 @@
 /turf/closed/wall/mineral/titanium/survival,
 /area/survivalpod)
 "ay" = (
-/obj/structure/mirror,
+/obj/structure/mirror/default,
 /turf/closed/wall/mineral/titanium/survival/pod,
 /area/survivalpod)
 "az" = (

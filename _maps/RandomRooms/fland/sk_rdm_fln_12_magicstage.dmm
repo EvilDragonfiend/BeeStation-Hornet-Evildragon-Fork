@@ -52,7 +52,7 @@
 /area/template_noop)
 "u" = (
 /obj/structure/chair/stool/bar,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 26
 	},
 /obj/machinery/light/small,

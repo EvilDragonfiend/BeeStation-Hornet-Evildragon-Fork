@@ -345,7 +345,7 @@
 /turf/open/floor/wood,
 /area/awaymission/beach)
 "bc" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 28
 	},
 /turf/open/floor/wood,
@@ -600,7 +600,7 @@
 /turf/open/floor/plasteel/white,
 /area/awaymission/beach)
 "bM" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/effect/turf_decal/sand,
@@ -610,7 +610,7 @@
 /turf/open/floor/plasteel/white,
 /area/awaymission/beach)
 "bN" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /obj/effect/turf_decal/sand,

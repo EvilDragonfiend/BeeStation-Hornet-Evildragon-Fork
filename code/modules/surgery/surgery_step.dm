@@ -61,7 +61,7 @@
 	var/selfpenalty = 0
 	var/sleepbonus = 0
 	if(target == user)
-		if(HAS_TRAIT(user, TRAIT_SELF_AWARE) || user.get_inactive_held_item() == /obj/item/handmirror || locate(/obj/structure/mirror) in view(1, user))
+		if(HAS_TRAIT(user, TRAIT_SELF_AWARE) || user.get_inactive_held_item() == /obj/item/handmirror || locate(/obj/structure/mirror/default) in view(1, user))
 			selfpenalty = 0.4
 		else
 			selfpenalty = 0.6
@@ -97,7 +97,7 @@
 	if(implement_type)//this means it isn't a require hand or any item step.
 		implement_speed_mod = implements[implement_type] / 100.0
 	speed_mod /= (get_speed_modifier(user, target) * (1 + surgery.speed_modifier) * implement_speed_mod)
-	
+
 	var/modded_time = time * speed_mod
 	fail_prob = min(max(0, modded_time - (time * 2)), 99)//if modded_time > time * 2, then fail_prob = modded_time - time*2. starts at 0, caps at 99
 	modded_time = min(modded_time, time * 2)//also if that, then cap modded_time at time*2

@@ -7,7 +7,7 @@
 /area/hilbertshotel)
 "ac" = (
 /obj/structure/table/wood/fancy,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	broken = 1;
 	desc = "Oh no, seven years of bad luck!";
 	icon_state = "mirror_broke";
@@ -170,7 +170,7 @@
 /turf/open/indestructible/hotelwood,
 /area/hilbertshotel)
 "aI" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -32
 	},
 /obj/structure/sink{
@@ -291,7 +291,7 @@
 /turf/open/indestructible/hoteltile,
 /area/hilbertshotel)
 "bb" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -32
 	},
 /obj/structure/sink{

@@ -349,7 +349,7 @@
 	dir = 8;
 	pixel_x = -12
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /obj/effect/turf_decal/tile/red/half/contrasted{
@@ -3389,7 +3389,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -4101,7 +4101,7 @@
 /turf/open/floor/plasteel/freezer,
 /area/syndicate_mothership/control)
 "qP" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/item/mop,
@@ -4194,7 +4194,7 @@
 /turf/open/floor/plasteel/freezer,
 /area/syndicate_mothership/control)
 "rj" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/structure/sink{
@@ -8026,7 +8026,7 @@
 	dir = 8;
 	pixel_x = -12
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /obj/effect/turf_decal/tile/red{
@@ -8044,7 +8044,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/effect/turf_decal/tile/green{
@@ -8082,7 +8082,7 @@
 	dir = 8;
 	pixel_x = -12
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /turf/open/floor/plasteel/white,
@@ -8121,7 +8121,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /turf/open/floor/plasteel/white,
@@ -8144,7 +8144,7 @@
 	dir = 8;
 	pixel_x = -12
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /obj/effect/turf_decal/tile/red{
@@ -8157,7 +8157,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/effect/turf_decal/tile/green/half/contrasted,
@@ -8168,7 +8168,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/effect/turf_decal/tile/green,
@@ -10387,7 +10387,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/effect/turf_decal/tile/neutral/fourcorners/contrasted,
@@ -11043,7 +11043,7 @@
 /area/ctf)
 "TK" = (
 /obj/structure/table/wood/bar,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 28
 	},
 /turf/open/floor/wood,

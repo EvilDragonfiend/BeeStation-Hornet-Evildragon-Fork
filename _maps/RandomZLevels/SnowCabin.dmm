@@ -108,7 +108,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 28
 	},
 /turf/open/floor/plasteel/freezer,
@@ -119,7 +119,7 @@
 	pixel_x = -12;
 	pixel_y = 2
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 28
 	},
 /turf/open/floor/plasteel/freezer,

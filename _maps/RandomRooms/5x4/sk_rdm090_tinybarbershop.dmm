@@ -22,7 +22,7 @@
 /area/template_noop)
 "b" = (
 /obj/structure/table,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 28
 	},
 /obj/item/razor{

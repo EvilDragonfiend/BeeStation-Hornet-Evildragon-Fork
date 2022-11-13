@@ -1417,7 +1417,7 @@
 	name = "medical sink";
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 26
 	},
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -17019,7 +17019,7 @@
 /obj/item/folder/white,
 /obj/item/flashlight/pen,
 /obj/item/clothing/neck/stethoscope,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/effect/turf_decal/tile/green/opposingcorners,
@@ -21658,7 +21658,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 26
 	},
 /turf/open/floor/stone,
@@ -40551,7 +40551,7 @@
 	dir = 8;
 	pixel_x = -12
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /obj/machinery/newscaster{
@@ -43531,7 +43531,7 @@
 /area/security/courtroom)
 "lkF" = (
 /obj/structure/window/reinforced,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 28
 	},
 /turf/open/floor/plasteel/dark,
@@ -44392,7 +44392,7 @@
 /turf/open/floor/plasteel/techmaint,
 /area/medical/morgue)
 "luX" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/structure/sink{
@@ -46481,7 +46481,7 @@
 	},
 /area/maintenance/aft/secondary)
 "lXa" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /obj/structure/sink{
@@ -53110,7 +53110,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/machinery/light/small,
@@ -54128,7 +54128,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 26
 	},
 /obj/effect/turf_decal/tile/blue/opposingcorners{
@@ -76827,7 +76827,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 26
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
@@ -81405,7 +81405,7 @@
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
 "uMj" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /obj/item/clothing/gloves/color/orange,
@@ -85640,7 +85640,7 @@
 /obj/item/folder/white,
 /obj/item/flashlight/pen,
 /obj/item/clothing/neck/stethoscope,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /obj/effect/turf_decal/tile/green/opposingcorners,
@@ -92273,7 +92273,7 @@
 /turf/open/floor/plasteel,
 /area/security/checkpoint)
 "xgf" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 28
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,

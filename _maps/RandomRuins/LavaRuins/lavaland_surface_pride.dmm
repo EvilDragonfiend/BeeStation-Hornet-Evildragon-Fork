@@ -9,13 +9,13 @@
 /turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "e" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -32
 	},
 /turf/open/floor/mineral/silver,
 /area/ruin/powered/pride)
 "f" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 32
 	},
 /turf/open/floor/mineral/silver,
@@ -24,7 +24,7 @@
 /turf/open/floor/mineral/silver,
 /area/ruin/powered/pride)
 "j" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -32
 	},
 /obj/machinery/light/small{
@@ -33,7 +33,7 @@
 /turf/open/floor/mineral/silver,
 /area/ruin/powered/pride)
 "k" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 32
 	},
 /obj/machinery/light/small{
@@ -42,7 +42,7 @@
 /turf/open/floor/mineral/silver,
 /area/ruin/powered/pride)
 "l" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -32
 	},
 /obj/machinery/light/small{
@@ -52,7 +52,7 @@
 /turf/open/floor/mineral/silver,
 /area/ruin/powered/pride)
 "m" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 32
 	},
 /obj/machinery/light/small{

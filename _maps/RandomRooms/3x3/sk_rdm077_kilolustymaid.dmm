@@ -32,7 +32,7 @@
 /obj/item/reagent_containers/glass/bucket,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 28
 	},
 /obj/effect/turf_decal/tile/neutral{

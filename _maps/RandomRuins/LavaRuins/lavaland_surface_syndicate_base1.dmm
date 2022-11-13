@@ -4281,7 +4281,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/effect/decal/cleanable/dirt,

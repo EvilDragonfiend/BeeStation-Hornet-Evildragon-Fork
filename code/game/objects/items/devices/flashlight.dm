@@ -128,7 +128,7 @@
 				if(M == user)
 					var/can_use_mirror = FALSE
 					if(isturf(user.loc))
-						var/obj/structure/mirror/mirror = locate(/obj/structure/mirror, user.loc)
+						var/obj/structure/mirror/default/mirror = locate(/obj/structure/mirror/default, user.loc)
 						if(mirror)
 							switch(user.dir)
 								if(NORTH)

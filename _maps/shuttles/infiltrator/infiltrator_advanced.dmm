@@ -1868,7 +1868,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/hallway)
 "dD" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /obj/machinery/shower{
@@ -2367,7 +2367,7 @@
 /turf/open/floor/pod/dark,
 /area/shuttle/syndicate/armory)
 "ep" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 28
 	},
 /obj/structure/sink{

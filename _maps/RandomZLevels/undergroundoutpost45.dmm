@@ -6275,7 +6275,7 @@
 	},
 /area/awaymission/undergroundoutpost45/crew_quarters)
 "pY" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/structure/sink{
@@ -6406,7 +6406,7 @@
 	dir = 8;
 	pixel_x = -11
 	},
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /turf/open/floor/plasteel/freezer{
@@ -6796,7 +6796,7 @@
 	},
 /area/awaymission/undergroundoutpost45/crew_quarters)
 "rc" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /obj/structure/sink{
@@ -9390,7 +9390,7 @@
 	pixel_x = 11
 	},
 /obj/machinery/light/small,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = 28
 	},
 /turf/open/floor/plasteel/freezer{

@@ -9,7 +9,7 @@
 /area/template_noop)
 "b" = (
 /obj/effect/decal/cleanable/blood/old,
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -26;
 	pixel_y = 28
 	},

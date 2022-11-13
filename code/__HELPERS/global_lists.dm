@@ -113,7 +113,7 @@ GLOBAL_LIST_INIT(WALLITEMS_INTERIOR, typecacheof(list(
 	/obj/machinery/door_timer,
 	/obj/machinery/flasher,
 	/obj/machinery/keycard_auth,
-	/obj/structure/mirror,
+	/obj/structure/mirror/default,
 	/obj/structure/fireaxecabinet,
 	/obj/machinery/computer/security/telescreen/entertainment,
 	/obj/structure/sign/picture_frame

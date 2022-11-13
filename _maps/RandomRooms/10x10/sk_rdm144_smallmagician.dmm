@@ -43,7 +43,7 @@
 /turf/open/floor/plating,
 /area/template_noop)
 "i" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_y = 26
 	},
 /turf/open/floor/carpet,

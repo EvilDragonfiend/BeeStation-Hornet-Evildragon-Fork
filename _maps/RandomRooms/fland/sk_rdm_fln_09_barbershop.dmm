@@ -113,7 +113,7 @@
 	},
 /area/template_noop)
 "w" = (
-/obj/structure/mirror{
+/obj/structure/mirror/default{
 	pixel_x = -28
 	},
 /obj/structure/chair/comfy{
