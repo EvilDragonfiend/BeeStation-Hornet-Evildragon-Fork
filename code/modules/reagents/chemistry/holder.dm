@@ -670,7 +670,8 @@
 	//add the reagent to the existing if it exists
 	for(var/A in cached_reagents)
 		var/datum/reagent/R = A
-		if (R.type == reagent)
+		var/datum/reagent/R2 = reagent
+		if ((R.type == R2.type) && (R.name == R2.name))
 			R.volume += amount
 			update_total()
 			if(my_atom)
