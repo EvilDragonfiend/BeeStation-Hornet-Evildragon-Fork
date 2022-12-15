@@ -132,7 +132,7 @@
 		I.remove_outline()
 		if(ismob(parent.loc))
 			var/mob/M = parent.loc
-			I.dropped(M, TRUE)
+			I.dropped(M)
 	if(new_location)
 		//Reset the items values
 		_removal_reset(AM)

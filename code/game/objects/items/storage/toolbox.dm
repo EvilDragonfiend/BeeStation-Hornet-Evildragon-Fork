@@ -17,8 +17,6 @@
 	custom_materials = list(/datum/material/iron = 500) //Toolboxes by default use iron as their core, custom material.
 	var/latches = "single_latch"
 	var/has_latches = TRUE
-	drop_sound = 'sound/items/handling/toolbox_drop.ogg'
-	pickup_sound =  'sound/items/handling/toolbox_pickup.ogg'
 
 /obj/item/storage/toolbox/Initialize(mapload)
 	. = ..()
@@ -249,8 +247,6 @@
 	desc = "It contains a few clips."
 	icon_state = "ammobox"
 	item_state = "ammobox"
-	drop_sound = 'sound/items/handling/ammobox_drop.ogg'
-	pickup_sound =  'sound/items/handling/ammobox_pickup.ogg'
 
 /obj/item/storage/toolbox/ammo/PopulateContents()
 	new /obj/item/ammo_box/a762(src)
