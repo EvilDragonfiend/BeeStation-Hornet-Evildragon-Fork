@@ -58,11 +58,9 @@
 #endif
 
 #include "dynamic_ruleset_sanity.dm"
-#include "enumerables.dm"
 #include "keybinding_init.dm"
 #include "reagent_id_typos.dm"
 #include "reagent_recipe_collisions.dm"
-#include "shuttle_width_height_correctness.dm"
 #include "spawn_humans.dm"
 #include "species_whitelists.dm"
 #include "greyscale_config.dm"

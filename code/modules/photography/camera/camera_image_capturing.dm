@@ -7,7 +7,7 @@
 		loc = location
 		appearance = A.appearance
 		dir = A.dir
-		if(ismovable(A))
+		if(ismovableatom(A))
 			var/atom/movable/AM = A
 			_step_x = AM.step_x
 			_step_y = AM.step_y

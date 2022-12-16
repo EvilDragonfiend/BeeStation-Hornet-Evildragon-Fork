@@ -124,5 +124,3 @@ require only minor tweaks.
 ///Hint for whether a genturf should generate as a closed or open turf. null for default.
 #define GENTURF_HINT_OPEN "open"
 #define GENTURF_HINT_CLOSED "closed"
-
-#define SPACE_KEY "space"

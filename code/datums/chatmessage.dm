@@ -241,7 +241,7 @@
 
 	var/bound_height = world.icon_size
 	var/bound_width = world.icon_size
-	if(ismovable(message_loc))
+	if(ismovableatom(message_loc))
 		var/atom/movable/AM = message_loc
 		bound_height = AM.bound_height
 		bound_width = AM.bound_width
