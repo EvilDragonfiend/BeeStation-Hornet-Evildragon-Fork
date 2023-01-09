@@ -47,12 +47,12 @@
 // if a reagent hasn't a relevant flag, it wouldn't come out from RNG theme - i.e.) maint pill
 #define CHEMICAL_BASIC_ELEMENT (1<<1)  // basic chemicals in chemistry - currently used in botany RNG (not yet - refactored for prepration)
 #define CHEMICAL_BASIC_DRINK   (1<<2)  // basic chemicals in bartending - currently used in botany RNG (not yet - refactored for prepration)
-#define CHEMICAL_RNG_GENERAL   (1<<3)  // it spawns in general stuff - i.e.) vent, abductor gland
+#define CHEMICAL_RNG_GENERAL   (1<<3)  // it spawns in general stuff - i.e.) vent event (*currently removed), eggs from abductor gland
 #define CHEMICAL_RNG_FUN       (1<<4)  // it spawns in maint pill or something else nasty. This usually has a dramatically interesting list including admin stuff minus some lame ones.
 #define CHEMICAL_RNG_BOTANY    (1<<5)  // it spawns in botany strange seeds
 
 // crew objective part - having this flag will allow an objective having a reagent
-// Note: to be not disruptive for adding another rng define, goal flags starts at (1<<23) and reversed. (because 23 is max)
+// Note: to be not disruptive for adding another rng define, goal flags start at (1<<23) and go reversed. (because 23 is max)
 #define CHEMICAL_GOAL_CHEMIST_USEFUL_MEDICINE (1<<23) // chemist objective - i.e.) make at least 5 units of synthflesh
 #define CHEMICAL_GOAL_BOTANIST_HARVEST        (1<<22) // botanist objective - i.e.) make 12 crops of 10u omnizine
 #define CHEMICAL_GOAL_BARTENDER_SERVING       (1<<21) // bartender's objective - i.e.) serve Bacchus' blessing to 10 crews
