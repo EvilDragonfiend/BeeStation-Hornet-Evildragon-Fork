@@ -1638,3 +1638,17 @@
 		return TRUE
 	return FALSE
 
+
+/// returns atom's name
+/atom/proc/get_recognisable_name(client/cli)
+	return src.name
+
+/mob/living/carbon/human/get_recognisable_name(client/cli)
+	var/mob/cli_mob = cli.mob
+	if(isobserver(cli_mob))
+		return src.name
+	else if(HAS_TRAIT(cli_mob, TRAIT_PROSOPAGNOSIA))
+		return "Unknown"
+
+	var/mob/living/carbon/human/H = src
+	return H.get_face_name()

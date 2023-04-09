@@ -1150,3 +1150,18 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 /client/proc/increase_score(achievement_type, mob/user, value)
 	return player_details.achievements.increase_score(achievement_type, user, value)
+
+
+/// writes texts in status_bar
+/client/MouseEntered(object, location, control, params)
+	. = ..()
+	if(isatom(object))
+		var/atom/A = object
+		winset(src, "mapwindow.status_bar", "text='[A.get_recognisable_name(src)]'")
+	else
+		winset(src, "mapwindow.status_bar", "text='[object]'")
+
+/// removes texts in status_bar
+/client/MouseExited(object, location, control, params)
+	. = ..()
+	winset(src, "mapwindow.status_bar", "text=''")
