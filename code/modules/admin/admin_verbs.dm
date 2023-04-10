@@ -709,6 +709,8 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	if(has_antag_hud())
 		toggle_combo_hud()
 
+	winset(src, "mapwindow.map", "right-click=true")
+
 	holder.deactivate()
 
 	to_chat(src, "<span class='interface'>You are now a normal player.</span>")
@@ -736,6 +738,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	if (!holder)
 		return //This can happen if an admin attempts to vv themself into somebody elses's deadmin datum by getting ref via brute force
 
+	winset(src, "mapwindow.map", "right-click=false")
 	to_chat(src, "<span class='interface'>You are now an admin.</span>")
 	message_admins("[src] re-adminned themselves.")
 	log_admin("[src] re-adminned themselves.")

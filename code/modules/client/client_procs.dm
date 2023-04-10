@@ -1150,3 +1150,20 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 /client/proc/increase_score(achievement_type, mob/user, value)
 	return player_details.achievements.increase_score(achievement_type, user, value)
+
+#define COMSIG_CLIENT_CLICK "comsigclick"
+/client/Click(atom/object, atom/location, control, params)
+	message_admins("----------------------")
+	message_admins("1. [object]")
+	message_admins("2. [location]")
+	message_admins("3. [control]")
+	message_admins("4. [params]")
+
+	SEND_SIGNAL(src, COMSIG_CLIENT_CLICK, object, location, control, params, usr)
+
+	for(var/atom/each_atom in location.contents)
+		if(!each_atom)
+			continue
+		openToolTip(usr, each_atom, title=each_atom.name, content = each_atom.desc,theme = "")
+
+	return
