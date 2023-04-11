@@ -536,3 +536,30 @@
 
 /datum/plant_gene/trait/plant_type/carnivory
 	name = "Obligate Carnivory"
+
+
+/datum/plant_gene/trait/poffu
+	name = "poffuer"
+
+/datum/plant_gene/trait/poffu/on_grow(obj/machinery/hydroponics/H)
+	var/static/datum/reagents/temp_reag_container
+	var/static/in_process = FALSE
+
+	while(in_process)
+		pass()
+	in_process = TRUE
+
+	var/obj/item/reagent_containers/plant = H.myseed.product
+	temp_reag_container = new(initial(plant.volume))
+	for(var/datum/plant_gene/reagent/each_reagent in H.myseed)
+		temp_reag_container.add_reagent(each_reagent.reagent_id, max(0.01, each_reagent.rate*H.myseed.potency))
+
+	var/datum/effect_system/smoke_spread/chem/smoke_effect = new
+	var/turf/target_turf = get_turf(H)
+	smoke_effect.attach(target_turf)
+	smoke_effect.set_up(temp_reag_container, 5, target_turf, 0)
+	smoke_effect.start()
+
+	temp_reag_container.clear_reagents()
+
+	in_process = FALSE

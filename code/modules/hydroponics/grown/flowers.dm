@@ -288,3 +288,35 @@
 	if(!user.gloves)
 		to_chat(user, "<span class='danger'>The [name] burns your bare hand!</span>")
 		user.adjustFireLoss(rand(1, 5))
+
+
+// Poppy
+/obj/item/seeds/poffu
+	name = "pack of poffu seeds"
+	desc = "These seeds grow into poppies."
+	icon_state = "seed-poppy"
+	species = "poffu"
+	plantname = "poffu Plants"
+	product = /obj/item/reagent_containers/food/snacks/grown/poffu
+	endurance = 10
+	maturation = 8
+	yield = 6
+	potency = 20
+	growthstages = 3
+	growing_icon = 'icons/obj/hydroponics/growing_flowers.dmi'
+	icon_grow = "poppy-grow"
+	icon_dead = "poppy-dead"
+	mutatelist = list()
+	reagents_add = list(/datum/reagent/medicine/morphine = 0.15, /datum/reagent/medicine/bicaridine = 0.2, /datum/reagent/consumable/nutriment = 0.05)
+	genes = list(/datum/plant_gene/trait/poffu)
+
+/obj/item/reagent_containers/food/snacks/grown/poffu
+	seed = /obj/item/seeds/poffu
+	name = "poffu"
+	desc = "Long-used as a symbol of rest, peace, and death."
+	icon_state = "poppy"
+	slot_flags = ITEM_SLOT_HEAD
+	filling_color = "#FF6347"
+	bitesize_mod = 3
+	foodtype = VEGETABLES | GROSS
+	distill_reagent = /datum/reagent/consumable/ethanol/vermouth
