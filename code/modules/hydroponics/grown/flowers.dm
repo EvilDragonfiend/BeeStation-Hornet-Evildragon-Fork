@@ -307,7 +307,7 @@
 	icon_grow = "poppy-grow"
 	icon_dead = "poppy-dead"
 	mutatelist = list()
-	reagents_add = list(/datum/reagent/medicine/morphine = 0.15, /datum/reagent/medicine/bicaridine = 0.2, /datum/reagent/consumable/nutriment = 0.05)
+	reagents_add = list(/datum/reagent/medicine/morphine = 0.15, /datum/reagent/medicine/bicaridine = 0.2, /datum/reagent/consumable/nutriment = 0.05, /datum/reagent/drug/space_drugs = 0.05)
 	genes = list(/datum/plant_gene/trait/poffu)
 
 /obj/item/reagent_containers/food/snacks/grown/poffu
