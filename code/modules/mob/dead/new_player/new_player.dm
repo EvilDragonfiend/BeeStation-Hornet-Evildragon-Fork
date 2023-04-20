@@ -47,6 +47,10 @@
 		return
 	var/output = "<center><p><a href='byond://?src=[REF(src)];show_preferences=1'>Setup Character</a></p>"
 
+	var/readied_character = client?.prefs?.active_character.real_name
+	if(readied_character)
+		output += "Current character:<br/>[readied_character]<br/>"
+
 	if(SSticker.current_state <= GAME_STATE_PREGAME)
 		switch(ready)
 			if(PLAYER_NOT_READY)
