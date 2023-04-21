@@ -1,11 +1,11 @@
 #define FREQ_LISTENING (1<<0)
 
 /obj/item/radio_abstract
+	name = "abstract radio item"
+	desc = "This shouldn't exist in game. Report this to coders."
 	icon = 'icons/obj/radio.dmi'
-	name = "station bounced radio"
 	icon_state = "walkietalkie"
 	item_state = "walkietalkie"
-	desc = "A basic handheld radio that communicates with local telecommunication networks."
 	dog_fashion = /datum/dog_fashion/back
 
 	flags_1 = CONDUCT_1
