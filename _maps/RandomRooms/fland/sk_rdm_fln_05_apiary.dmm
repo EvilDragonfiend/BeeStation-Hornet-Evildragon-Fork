@@ -9,7 +9,7 @@
 /area/template_noop)
 "c" = (
 /obj/machinery/hydroponics/soil,
-/obj/item/radio/intercom{
+/obj/item/radio_abstract/intercom{
 	pixel_x = 29
 	},
 /obj/item/seeds/cannabis,

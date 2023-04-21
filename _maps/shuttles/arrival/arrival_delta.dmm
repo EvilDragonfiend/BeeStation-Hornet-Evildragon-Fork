@@ -342,7 +342,7 @@
 /obj/item/paper_bin,
 /obj/item/pen,
 /obj/effect/turf_decal/bot,
-/obj/item/radio/intercom{
+/obj/item/radio_abstract/intercom{
 	pixel_x = -30
 	},
 /turf/open/floor/plasteel,

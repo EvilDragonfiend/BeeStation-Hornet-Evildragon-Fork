@@ -187,7 +187,7 @@
 	dir = 8
 	},
 /obj/machinery/light/small,
-/obj/item/radio/intercom{
+/obj/item/radio_abstract/intercom{
 	pixel_y = -29
 	},
 /obj/effect/turf_decal/tile/brown,
@@ -479,7 +479,7 @@
 	dir = 8
 	},
 /obj/machinery/light/small,
-/obj/item/radio/intercom{
+/obj/item/radio_abstract/intercom{
 	pixel_y = -29
 	},
 /obj/effect/decal/cleanable/dirt,

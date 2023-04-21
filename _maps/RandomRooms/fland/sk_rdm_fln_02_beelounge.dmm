@@ -52,7 +52,7 @@
 /area/template_noop)
 "s" = (
 /obj/machinery/jukebox,
-/obj/item/radio/intercom{
+/obj/item/radio_abstract/intercom{
 	pixel_x = 29
 	},
 /turf/open/floor/wax,

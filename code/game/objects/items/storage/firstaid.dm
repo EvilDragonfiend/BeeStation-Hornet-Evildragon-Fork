@@ -88,7 +88,7 @@
 		/obj/item/extinguisher/mini,
 		/obj/item/reagent_containers/hypospray,
 		/obj/item/sensor_device,
-		/obj/item/radio,
+		/obj/item/radio_abstract/walkie_talkie,
 		/obj/item/clothing/gloves/,
 		/obj/item/lazarus_injector,
 		/obj/item/bikehorn/rubberducky,
