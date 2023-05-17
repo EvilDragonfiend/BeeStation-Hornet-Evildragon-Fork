@@ -1,6 +1,7 @@
 /* HUD DATUMS */
 
 GLOBAL_LIST_EMPTY(all_huds)
+GLOBAL_LIST_EMPTY(personal_huds)
 
 //GLOBAL HUD LIST
 GLOBAL_LIST_INIT(huds, list(
@@ -52,9 +53,16 @@ GLOBAL_LIST_INIT(huds, list(
 	var/list/next_time_allowed = list() //mobs associated with the next time this hud can be added to them
 	var/list/queued_to_see = list() //mobs that have triggered the cooldown and are queued to see the hud, but do not yet
 	var/hud_exceptions = list() // huduser = list(ofatomswiththeirhudhidden) - aka everyone hates targeted invisiblity
+	var/personal = FALSE
+
+/datum/atom_hud/personal
+	personal = TRUE
 
 /datum/atom_hud/New()
-	GLOB.all_huds += src
+	if(!personal)
+		GLOB.all_huds += src
+	else
+		GLOB.personal_huds += src
 
 /datum/atom_hud/Destroy()
 	for(var/v in hudusers)

@@ -26,6 +26,7 @@
 #define DIAG_LAUNCHPAD_HUD "22" //Displays launchpads' targeting reticle
 //for antag huds. these are used at the /mob level
 #define ANTAG_HUD		"23"
+#define PERSONAL_HUD	"personal" // every hud that is personel to each person
 
 //by default everything in the hud_list of an atom is an image
 //a value in hud_list with one of these will change that behavior
