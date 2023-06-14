@@ -197,7 +197,8 @@
 					var/list/cache = model_cache[model_key]
 					if(!cache)
 						CRASH("Undefined model key in DMM: [model_key]")
-					message_admins("We check what's in: [locate(xcrd, ycrd, zcrd)]")
+					if(is_station_level(zcrd) || is_mining_level(zcrd))
+						rlogger("We check what's in: [locate(xcrd, ycrd, zcrd)] //location: x[xcrd], y[ycrd], z[zcrd]")
 					placing_template.build_coordinate(area_cache, cache, locate(xcrd, ycrd, zcrd), no_afterchange, place_on_top)
 
 					// only bother with bounds that actually exist

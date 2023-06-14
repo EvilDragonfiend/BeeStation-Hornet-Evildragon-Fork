@@ -223,6 +223,9 @@
 #endif
 	SEND_TEXT(world.log, text)
 
+/proc/rlogger(text)
+	WRITE_LOG(GLOB.world_runtime_log_check, text)
+
 /* Log to the logfile only. */
 /proc/log_runtime(text)
 	WRITE_LOG(GLOB.world_runtime_log, text)

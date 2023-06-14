@@ -28,8 +28,8 @@
 
 
 /turf/open/floor/Initialize(mapload)
-	if(istype(src, /turf/open/floor/plating/beach) && !is_centcom_level(src.z))
-		message_admins("current: [src.type] // states: [name] //[icon_state] //[initial(icon_state)]//[icon_plating] //[initial(icon_plating)] //location: x[x], y[y], z[z]")
+	if(istype(src, /turf/open/floor/plating/beach) && (is_station_level(z) || is_mining_level(z)))
+		rlogger("current: [src.type] // states: [name] //[icon_state] //[initial(icon_state)]//[icon_plating] //[initial(icon_plating)] //location: x[x], y[y], z[z]")
 
 	if (!broken_states)
 		broken_states = typelist("broken_states", list("damaged1", "damaged2", "damaged3", "damaged4", "damaged5"))

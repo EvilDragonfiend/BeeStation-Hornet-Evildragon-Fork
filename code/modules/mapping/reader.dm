@@ -408,6 +408,9 @@
 /datum/parsed_map/proc/instance_atom(path,list/attributes, turf/crds, no_changeturf, placeOnTop)
 	world.preloader_setup(attributes, path)
 
+	if(!(crds.flags_1 & INITIALIZED_1))
+		rlogger("[crds] (x[crds.x], y[crds.y], z[crds.z]) is called")
+
 	if(crds)
 		if(ispath(path, /turf))
 			if(placeOnTop)
