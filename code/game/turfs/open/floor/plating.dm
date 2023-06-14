@@ -47,6 +47,8 @@
 	if(!..())
 		return
 	if(!broken && !burnt)
+		if(istype(src, /turf/open/floor/plating/beach) && !is_centcom_level(src.z))
+			message_admins("current: [src.type] // BEING UPDATED //location: x[x], y[y], z[z]")
 		icon_state = icon_plating //Because asteroids are 'platings' too.
 
 /turf/open/floor/plating/attackby(obj/item/C, mob/user, params)

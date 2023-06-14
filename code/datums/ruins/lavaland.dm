@@ -4,7 +4,7 @@
 	prefix = "_maps/RandomRuins/LavaRuins/"
 
 /datum/map_template/ruin/lavaland/biodome
-	cost = 5
+	cost = 1
 	allow_duplicates = FALSE
 
 /datum/map_template/ruin/lavaland/biodome/beach
@@ -14,25 +14,12 @@
 	Comes with a rustic wooden bar and suicidal bartender."
 	suffix = "lavaland_biodome_beach.dmm"
 
-/datum/map_template/ruin/lavaland/biodome/winter
-	name = "Biodome Winter"
-	id = "biodome-winter"
-	description = "For those getaways where you want to get back to nature, but you don't want to leave the fortified military compound where you spend your days. \
-	Includes a unique(*) laser pistol display case, and the recently introduced I.C.E(tm)."
-	suffix = "lavaland_surface_biodome_winter.dmm"
-
-/datum/map_template/ruin/lavaland/biodome/clown
-	name = "Biodome Clown Planet"
-	id = "biodome-clown"
-	description = "WELCOME TO CLOWN PLANET! HONK HONK HONK etc.!"
-	suffix = "lavaland_biodome_clown_planet.dmm"
-
 /datum/map_template/ruin/lavaland/cube
 	name = "The Wishgranter Cube"
 	id = "wishgranter-cube"
 	description = "Nothing good can come from this. Learn from their mistakes and turn around."
 	suffix = "lavaland_surface_cube.dmm"
-	cost = 10
+	cost = 101
 	allow_duplicates = FALSE
 
 /datum/map_template/ruin/lavaland/seed_vault
@@ -41,7 +28,7 @@
 	description = "The creators of these vaults were a highly advanced and benevolent race, and launched many into the stars, hoping to aid fledgling civilizations. \
 	However, all the inhabitants seem to do is grow drugs and guns."
 	suffix = "lavaland_surface_seed_vault.dmm"
-	cost = 5
+	cost = 51
 	allow_duplicates = FALSE
 
 /datum/map_template/ruin/lavaland/ash_walker
@@ -50,7 +37,7 @@
 	description = "A race of unbreathing lizards live here, that run faster than a human can, worship a broken dead city, and are capable of reproducing by something involving tentacles? \
 	Probably best to stay clear."
 	suffix = "lavaland_surface_ash_walker1.dmm"
-	cost = 5
+	cost = 51
 	allow_duplicates = FALSE
 
 /datum/map_template/ruin/lavaland/syndicate_base
@@ -58,7 +45,7 @@
 	id = "lava-base"
 	description = "A secret base researching illegal bioweapons, it is closely guarded by an elite team of syndicate agents."
 	suffix = "lavaland_surface_syndicate_base1.dmm"
-	cost = 5
+	cost = 51
 	allow_duplicates = FALSE
 
 /datum/map_template/ruin/lavaland/free_golem
@@ -66,7 +53,7 @@
 	id = "golem-ship"
 	description = "Lumbering humanoids, made out of precious metals, move inside this ship. They frequently leave to mine more minerals, which they somehow turn into more of them. \
 	Seem very intent on research and individual liberty, and also geology based naming?"
-	cost = 5
+	cost = 51
 	suffix = "lavaland_surface_golem_ship.dmm"
 	allow_duplicates = FALSE
 
@@ -74,7 +61,7 @@
 	name = "Animal Hospital"
 	id = "animal-hospital"
 	description = "An ancient animal hospital, its true purpose long forgotten. The doctors awaken with a singular purpose: heal the dying, sick, and injured habitants of the wasteland around them."
-	cost = 5
+	cost = 51
 	suffix = "lavaland_surface_animal_hospital.dmm"
 	allow_duplicates = FALSE
 
@@ -113,7 +100,7 @@
 	description = "..."
 	suffix = "lavaland_surface_sloth.dmm"
 	// Generates nothing but atmos runtimes and salt
-	cost = 0
+	cost = 90
 
 /datum/map_template/ruin/lavaland/ratvar
 	name = "Dead God"
@@ -152,7 +139,7 @@
 	id = "ufo-crash"
 	description = "Turns out that keeping your abductees unconscious is really important. Who knew?"
 	suffix = "lavaland_surface_ufo_crash.dmm"
-	cost = 5
+	cost = 53
 
 /datum/map_template/ruin/lavaland/xeno_nest
 	name = "Xenomorph Nest"
@@ -160,21 +147,21 @@
 	description = "These xenomorphs got bored of horrifically slaughtering people on space stations, and have settled down on a nice lava filled hellscape to focus on what's really important in life. \
 	Quality memes."
 	suffix = "lavaland_surface_xeno_nest.dmm"
-	cost = 20
+	cost = 203
 
 /datum/map_template/ruin/lavaland/fountain
 	name = "Fountain Hall"
 	id = "fountain"
 	description = "The fountain has a warning on the side. DANGER: May have undeclared side effects that only become obvious when implemented."
 	suffix = "lavaland_surface_fountain_hall.dmm"
-	cost = 5
+	cost = 53
 
 /datum/map_template/ruin/lavaland/survivalcapsule
 	name = "Survival Capsule Ruins"
 	id = "survivalcapsule"
 	description = "What was once sanctuary to the common miner, is now their tomb."
 	suffix = "lavaland_surface_survivalpod.dmm"
-	cost = 5
+	cost = 53
 
 /datum/map_template/ruin/lavaland/pizza
 	name = "Ruined Pizza Party"
@@ -182,7 +169,7 @@
 	description = "Little Timmy's birthday pizza-bash took a turn for the worse when a bluespace anomaly passed by."
 	suffix = "lavaland_surface_pizzaparty.dmm"
 	allow_duplicates = FALSE
-	cost = 5
+	cost = 55
 
 /datum/map_template/ruin/lavaland/cultaltar
 	name = "Summoning Ritual"
@@ -190,7 +177,7 @@
 	description = "A place of vile worship, the scrawling of blood in the middle glowing eerily. A demonic laugh echoes throughout the caverns"
 	suffix = "lavaland_surface_cultaltar.dmm"
 	allow_duplicates = FALSE
-	cost = 10
+	cost = 105
 
 /datum/map_template/ruin/lavaland/hermit
 	name = "Makeshift Shelter"
@@ -198,7 +185,7 @@
 	description = "A place of shelter for a lone hermit, scraping by to live another day."
 	suffix = "lavaland_surface_hermit.dmm"
 	allow_duplicates = FALSE
-	cost = 5
+	cost = 55
 
 /datum/map_template/ruin/lavaland/swarmer_boss
 	name = "Crashed Shuttle"
@@ -206,7 +193,7 @@
 	description = "A Syndicate shuttle had an unfortunate stowaway..."
 	suffix = "lavaland_surface_swarmer_crash.dmm"
 	allow_duplicates = FALSE
-	cost = 20
+	cost = 205
 
 /datum/map_template/ruin/lavaland/miningripley
 	name = "Ripley"
@@ -221,7 +208,7 @@
 	id = "puzzle"
 	description = "Mystery to be solved."
 	suffix = "lavaland_surface_puzzle.dmm"
-	cost = 5
+	cost = 55
 
 /datum/map_template/ruin/lavaland/elite_tumor
 	name = "Pulsating Tumor"
