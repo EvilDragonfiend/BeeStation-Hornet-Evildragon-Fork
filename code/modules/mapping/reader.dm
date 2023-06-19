@@ -31,6 +31,9 @@
 	var/static/regex/trimQuotesRegex = new(@'^[\s\n]+"?|"?[\s\n]+$|^"|"$', "g")
 	var/static/regex/trimRegex = new(@'^[\s\n]+|[\s\n]+$', "g")
 
+/datum/parsed_map/proc/show_yourself(atte="unknown")
+	log_world("[atte]: \ref[src] ([original_path])")
+
 #ifdef TESTING
 	var/turfsSkipped = 0
 #endif

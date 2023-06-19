@@ -34,6 +34,7 @@
 		width = bounds[MAP_MAXX] // Assumes all templates are rectangular, have a single Z level, and begin at 1,1,1
 		height = bounds[MAP_MAXY]
 		if(cache)
+			parsed.show_yourself("parse target")
 			cached_map = parsed
 	return bounds
 
@@ -157,6 +158,7 @@
 	// ruins clogging up memory for the whole round.
 	maps_loading ++
 	var/datum/parsed_map/parsed = cached_map ? cached_map.copy() : new(file(mappath))
+	parsed.show_yourself("parse copy targeted")
 	cached_map = parsed
 
 	var/list/turf_blacklist = list()
@@ -172,6 +174,9 @@
 	return map_placer
 
 /datum/map_template/proc/on_placement_completed(datum/map_generator/map_gen, turf/T, init_atmos, datum/parsed_map/parsed, finalize = TRUE, ...)
+	log_world("Current map ref \ref[src] / [name]")
+	parsed.show_yourself("parsed_map on_placement_completed()")
+	cached_map.show_yourself("cached_map on_placement_completed()")
 	var/list/bounds = parsed.bounds
 	if(!bounds)
 		maps_loading --
