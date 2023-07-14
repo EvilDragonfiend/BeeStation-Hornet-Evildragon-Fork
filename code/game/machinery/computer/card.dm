@@ -387,15 +387,9 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 
 		if (authenticated && inserted_modify_id)
 
-<<<<<<< HEAD
 			var/carddesc = text("")
 			var/jobs = text("")
 			if( authenticated)
-=======
-			var/carddesc = ""
-			var/jobs = ""
-			if( authenticated == 2)
->>>>>>> master
 				carddesc += {"<script type="text/javascript">
 									function markRed(){
 										var nameField = document.getElementById('namefield');
