@@ -4,16 +4,14 @@
 
 */
 
-#define ACCESS_TEMP_SETUP(temp, acclist) temp = acclist; acclist = list();
 SUBSYSTEM_DEF(department)
 	name = "Departments"
 	init_order = INIT_ORDER_DEPARTMENT
 	flags = SS_NO_FIRE
 
-	//
+	var/list/datum/department_group/department_type_list = list()
+	var/list/datum/department_group/department_by_key = list()
 	var/list/department_id_list = list()
-	var/list/department_type_list = list()
-	var/list/department_by_key = list()
 	var/list/sorted_department_for_manifest = list()
 	var/list/sorted_department_for_pref = list()
 
