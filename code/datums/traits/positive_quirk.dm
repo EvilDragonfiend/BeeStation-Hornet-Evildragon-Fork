@@ -9,6 +9,25 @@
 	gain_text = "<span class='notice'>You feel like you could drink a whole keg!</span>"
 	lose_text = "<span class='danger'>You don't feel as resistant to alcohol anymore. Somehow.</span>"
 
+/datum/quirk/alcohol_tolerance/proc/tolerate_booze(booze_power)
+	var/mob/living/carbon/human/H = quirk_target
+	if(H.drunkenness < 21)
+		return booze_power
+	if(H.drunkenness < 31)
+		return booze_power*0.9
+	if(H.drunkenness < 41)
+		return booze_power*0.8
+	if(H.drunkenness < 51)
+		return booze_power*0.7
+	if(H.drunkenness < 61)
+		return booze_power*0.6
+	if(H.drunkenness < 71)
+		return booze_power*0.5
+	if(H.drunkenness < 81)
+		return booze_power*0.4
+
+	return booze_power*0.3
+
 /datum/quirk/apathetic
 	name = "Apathetic"
 	desc = "You just don't care as much as other people. That's nice to have in a place like this, I guess."

@@ -39,7 +39,8 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	if(C.drunkenness < volume * boozepwr * ALCOHOL_THRESHOLD_MODIFIER)
 		var/booze_power = boozepwr
 		if(HAS_TRAIT(C, TRAIT_ALCOHOL_TOLERANCE)) //we're an accomplished drinker
-			booze_power *= 0.7
+			var/datum/quirk/alcohol_tolerance/tolerance_quirk = C.has_quirk(/datum/quirk/alcohol_tolerance)
+			booze_power = tolerance_quirk.tolerate_booze(booze_power)
 		if(HAS_TRAIT(C, TRAIT_LIGHT_DRINKER))
 			if(booze_power < 0)
 				booze_power *= -1
