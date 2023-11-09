@@ -34,10 +34,6 @@
 #define COMSIG_KB_CLIENT_OOC_DOWN "keybinding_client_ooc_down"
 #define COMSIG_KB_CLIENT_LOOC_DOWN "keybinding_client_looc_down"
 
-// Client -- It's basically client thing, but should be sorted to mobs in pref
-#define COMSIG_KB_CLIENT_ROTATE_CLOCKWISE_DOWN "keybind_client_clockwise_down"
-#define COMSIG_KB_CLIENT_ROTATE_ANTICLOCKWISE_DOWN "keybind_client_anticlockwise_down"
-
 //Human
 #define COMSIG_KB_HUMAN_QUICKEQUIP_DOWN "keybinding_human_quickequip_down"
 #define COMSIG_KB_HUMAN_QUICKEQUIPBELT_DOWN "keybinding_human_quickequipbelt_down"
