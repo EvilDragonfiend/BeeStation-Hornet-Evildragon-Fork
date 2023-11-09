@@ -1044,6 +1044,49 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if (prefs?.read_player_preference(/datum/preference/toggle/auto_fit_viewport))
 		addtimer(CALLBACK(src,.verb/fit_viewport,10)) //Delayed to avoid wingets from Login calls.
 
+// client rotate procs
+/client/proc/rotate_clockwise()
+	debug_winget("BEFORE")
+	var/true_dir = sanitize_client_direction()
+	switch(true_dir)
+		if(NORTH) // default
+			dir = EAST
+		if(WEST)
+			dir = NORTH
+		if(SOUTH)
+			dir = WEST
+		if(EAST)
+			dir = SOUTH
+	mob?.setDir(dir)
+	view_size.apply()
+	debug_winget("AFTER")
+
+/client/proc/rotate_anticlockwise()
+	debug_winget("BEFORE")
+	var/true_dir = sanitize_client_direction()
+	switch(true_dir)
+		if(NORTH) // default
+			dir = WEST
+		if(WEST)
+			dir = SOUTH
+		if(SOUTH)
+			dir = EAST
+		if(EAST)
+			dir = NORTH
+	mob?.setDir(dir)
+	view_size.apply()
+	debug_winget("AFTER")
+
+/// a random code can let have multi-dir, but it's BAD. this filters to get a corrected dir.
+/client/proc/sanitize_client_direction()
+	return (dir & NORTH) || (dir & SOUTH) || (dir & WEST) || (dir & EAST)
+
+// for debugging - REMOVAL-CANDIDATE
+/client/proc/debug_winget(tx)
+	message_admins("-----winget info: [tx]-----")
+	message_admins("[tx]. mainwindow split: [winget(src, "mainwindow.split", "size")]")
+	message_admins("[tx]. map-window map: [winget(src, "mapwindow.map", "size")]")
+
 /client/proc/generate_clickcatcher()
 	if(!void)
 		void = new()

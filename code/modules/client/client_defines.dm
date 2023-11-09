@@ -105,6 +105,7 @@
 	var/keysend_tripped = FALSE
 
 	var/datum/viewData/view_size
+	var/mapwindow_size /// placeholder value before rotating //REMOVAL-CANDIDATE
 
 	// List of all asset filenames sent to this client by the asset cache, along with their assoicated md5s
 	var/list/sent_assets = list()

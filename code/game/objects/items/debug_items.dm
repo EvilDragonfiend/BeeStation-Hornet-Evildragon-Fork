@@ -290,6 +290,7 @@
 		TRAIT_SURGEON,
 		TRAIT_METALANGUAGE_KEY_ALLOWED
 	)
+	var/spacewalk_initial
 
 /obj/item/debug/orb_of_power/pickup(mob/user)
 	. = ..()
@@ -312,12 +313,18 @@
 	picker.see_override = SEE_INVISIBLE_OBSERVER
 	picker.update_sight()
 
+	spacewalk_initial = user.spacewalk
+	user.spacewalk = TRUE
 
 /obj/item/debug/orb_of_power/dropped(mob/living/carbon/human/user)
 	. = ..()
 	var/obj/item/debug/orb_of_power/orb = locate() in user.get_contents()
 	if(orb)
 		return
+
+	spacewalk_initial = user.spacewalk
+	user.spacewalk = TRUE
+
 	for(var/each in traits_to_give)
 		REMOVE_TRAIT(user, each, "debug")
 	user.remove_all_languages("debug")
@@ -333,3 +340,132 @@
 	if(!HAS_TRAIT(user, TRAIT_SECURITY_HUD))
 		hud = GLOB.huds[DATA_HUD_SECURITY_ADVANCED]
 		hud.remove_hud_from(user)
+
+// kinda works like hilbert, but not really
+/obj/item/map_template_diver
+	name = "Pseudo-world diver"
+	desc = "A globe that you can dive into a pseudo-world, but there's no way back."
+	icon_state = "hilbertshotel"
+	w_class = WEIGHT_CLASS_TINY
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+
+	var/datum/map_template/map_template = /datum/map_template/debug_target
+	var/working
+	var/turf_to_dive
+
+/datum/map_template/debug_target
+	name = "Debug map to test"
+	mappath = '_maps/map_files/debug/multidir_sprite_debug.dmm'
+
+/obj/item/map_template_diver/Initialize()
+	. = ..()
+
+/obj/item/map_template_diver/attack_self(mob/user)
+	. = ..()
+
+	if(ispath(map_template))
+		to_chat(user, "<span class='notice'>Creates a map template...</span>")
+		working = TRUE
+		map_template = new map_template()
+		var/datum/space_level/space_level = map_template.load_new_z(null, ZTRAITS_DEBUG)
+		turf_to_dive = locate(round((world.maxx - map_template.width)/2), round((world.maxy - map_template.height)/2), space_level.z_value)
+		to_chat(user, "<span class='notice'>Creation is completed.</span>")
+		working = FALSE
+		dive_into(user)
+		return
+
+	if(working)
+		return
+
+	dive_into(user)
+
+/obj/item/map_template_diver/proc/dive_into(mob/user)
+	to_chat(user, "<span class='notice'>Teleports to the test area.</span>")
+	user.forceMove(turf_to_dive)
+
+// these should be stored in somewhere
+/turf/closed/wall/debug
+	name = "Sprite smoothing debugging walls"
+	var/static/list/family = list()
+
+/turf/closed/wall/debug/Initialize(mapload)
+	. = ..()
+	family += src
+
+/turf/closed/wall/debug/Destroy()
+	. = ..()
+	family -= src
+
+/turf/closed/wall/debug/attack_hand(mob/user)
+	. = ..()
+	sprite_smooth_debug(user, family, src.parent_type)
+
+/obj/structure/table/debug
+	name = "Sprite smoothing debugging table"
+	var/static/list/family = list()
+
+/obj/structure/table/debug/Initialize(mapload)
+	. = ..()
+	family += src
+
+/obj/structure/table/debug/Destroy()
+	. = ..()
+	family -= src
+
+/obj/structure/table/debug/attack_hand(mob/user)
+	. = ..()
+	sprite_smooth_debug(user, family, src.parent_type)
+
+/turf/open/floor/carpet/debug
+	name = "Sprite smoothing debugging floor"
+	var/static/list/family = list()
+
+/turf/open/floor/carpet/debug/Initialize(mapload)
+	. = ..()
+	family += src
+
+/turf/open/floor/carpet/debug/Destroy()
+	. = ..()
+	family -= src
+
+/turf/open/floor/carpet/debug/attack_hand(mob/user)
+	. = ..()
+	sprite_smooth_debug(user, family, /turf/open)
+
+/proc/sprite_smooth_debug(mob/user, list/family, desired_subtypes)
+	// we don't want to see types that don't have smoothing.
+	var/static/list/filtered_list = list()
+	if(!filtered_list[desired_subtypes])
+		var/list/L = list()
+		var/list/temp_list = make_types_fancy(typesof(desired_subtypes))
+		for(var/each in temp_list)
+			var/atom/A = temp_list[each]
+			if(!initial(A.canSmoothWith) || !(initial(A.smoothing_flags) & SMOOTH_BITMASK) || findtext(initial(A.name), "Sprite smoothing debugging"))
+				continue
+			L[each] = A
+		filtered_list[desired_subtypes] = L
+
+	// actual code
+	var/atom/target = pick_closest_path(desired_subtypes, filtered_list[desired_subtypes])
+	if(!target)
+		return
+
+	target = new target(get_turf(locate(1,1,1)))
+	target.invisibility = INVISIBILITY_ABSTRACT
+	for(var/atom/each in family)
+		if(QDELETED(each))
+			continue
+		each.icon = target.icon
+		each.base_icon_state = target.base_icon_state
+		each.smoothing_flags = target.smoothing_flags
+		each.smoothing_groups = target.smoothing_groups.Copy()
+		each.canSmoothWith = target.canSmoothWith.Copy()
+	for(var/atom/each in family)
+		each.bitmask_smooth()
+	if(isturf(target))
+		var/turf/T = target
+		T.ScrapeAway()
+	else
+		qdel(target)
+
+
