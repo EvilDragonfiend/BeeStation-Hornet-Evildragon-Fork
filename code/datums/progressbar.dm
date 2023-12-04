@@ -28,9 +28,9 @@
 	var/list/bars = user.progressbars[bar.loc]
 	bars.Add(src)
 	listindex = bars.len
-	bar.pixel_y = 0
+	bar.pixel_z = 0
 	bar.alpha = 0
-	animate(bar, pixel_y = 32 + (PROGRESSBAR_HEIGHT * (listindex - 1)), alpha = 255, time = PROGRESSBAR_ANIMATION_TIME, easing = SINE_EASING)
+	animate(bar, pixel_z = 32 + (PROGRESSBAR_HEIGHT * (listindex - 1)), alpha = 255, time = PROGRESSBAR_ANIMATION_TIME, easing = SINE_EASING)
 
 /datum/progressbar/proc/update(progress)
 	if (!user || !user.client)
@@ -51,9 +51,9 @@
 
 /datum/progressbar/proc/shiftDown()
 	--listindex
-	bar.pixel_y = 32 + (PROGRESSBAR_HEIGHT * (listindex - 1))
+	bar.pixel_z = 32 + (PROGRESSBAR_HEIGHT * (listindex - 1))
 	var/dist_to_travel = 32 + (PROGRESSBAR_HEIGHT * (listindex - 1)) - PROGRESSBAR_HEIGHT
-	animate(bar, pixel_y = dist_to_travel, time = PROGRESSBAR_ANIMATION_TIME, easing = SINE_EASING)
+	animate(bar, pixel_z = dist_to_travel, time = PROGRESSBAR_ANIMATION_TIME, easing = SINE_EASING)
 
 /datum/progressbar/Destroy()
 	if(last_progress != goal)
