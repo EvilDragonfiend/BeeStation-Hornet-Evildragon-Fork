@@ -71,7 +71,7 @@
 
 /obj/item/food/grown/Destroy()
 	if(isatom(seed))
-		QDEL_NULL(seed)
+		QDEL_IN(seed, 2 SECONDS) // I hate to do this but seed should exist before the plant is fully qdel'ed
 	return ..()
 
 /obj/item/food/grown/make_edible()
