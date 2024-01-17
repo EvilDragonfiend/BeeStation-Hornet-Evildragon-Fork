@@ -239,3 +239,6 @@
 /// Gives the number of pixels in an orthogonal line of tiles.
 #define TILES_TO_PIXELS(tiles)			(tiles * PIXELS)
 // )
+/// Similar to clamp() but can return value outside of the range min-max, when the original value was outside of the range.
+/// So, this means it respects the original value - that's why it's named respected.
+#define ADDCLAMP(val_respected, val_to_add, minimum, maximum) ((val_respected + val_to_add) < minimum ? min(val_respected, minimum) : (val_respected + val_to_add) > maximum ? max(val_respected, maximum) : val_respected + val_to_add)
