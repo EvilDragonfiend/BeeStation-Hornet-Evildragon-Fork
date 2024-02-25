@@ -3,7 +3,7 @@
 	desc = "Used to view and edit personnel's security records."
 	icon_screen = "security"
 	icon_keyboard = "security_key"
-	req_one_access = list(ACCESS_SEC_RECORDS)
+	req_one_access = list(ACCESS_SEC_RECORDS, ACCESS_CHANGE_IDS)
 	circuit = /obj/item/circuitboard/computer/secure_data
 	var/rank = null
 	var/screen = null
@@ -18,6 +18,7 @@
 	var/sortBy = "name"
 	var/order = 1 // -1 = Descending - 1 = Ascending
 	light_color = LIGHT_COLOR_RED
+	var/can_change_job
 
 /obj/machinery/computer/secure_data/Initialize(mapload, obj/item/circuitboard/C)
 	. = ..()
@@ -467,6 +468,7 @@ What a mess.*/
 				screen = null
 				active1 = null
 				active2 = null
+				can_change_job = null
 				playsound(src, 'sound/machines/terminal_off.ogg', 50, FALSE)
 
 			if("Log In")
@@ -477,18 +479,24 @@ What a mess.*/
 					active2 = null
 					authenticated = M.name
 					rank = JOB_NAME_AI
+					can_change_job = TRUE
 					screen = 1
 				else if(IsAdminGhost(M))
 					active1 = null
 					active2 = null
 					authenticated = M.client.holder.admin_signature
 					rank = JOB_CENTCOM_CENTRAL_COMMAND
+					can_change_job = TRUE
 					screen = 1
 				else if(I && check_access(I))
 					active1 = null
 					active2 = null
 					authenticated = I.registered_name
 					rank = I.assignment
+					for(var/each_access in list(ACCESS_CHANGE_IDS, ACCESS_CAPTAIN))
+						if(each_access in I.access)
+							can_change_job = TRUE
+							break
 					screen = 1
 				else
 					to_chat(usr, "<span class='danger'>Unauthorized Access.</span>")
@@ -891,16 +899,14 @@ What a mess.*/
 							temp += "<li><a href='?src=[REF(src)];choice=Change Criminal Status;criminal2=released'>Discharged</a></li>"
 							temp += "</ul>"
 					if("rank")
-						var/list/L = list( JOB_NAME_HEADOFPERSONNEL, JOB_NAME_CAPTAIN, JOB_NAME_AI, JOB_CENTCOM_CENTRAL_COMMAND)
-						//This was so silly before the change. Now it actually works without beating your head against the keyboard. /N
-						if((istype(active1, /datum/data/record) && L.Find(rank)))
+						if(can_change_job)
 							temp = "<h5>Rank:</h5>"
 							temp += "<ul>"
 							for(var/rank in get_all_jobs())
 								temp += "<li><a href='?src=[REF(src)];choice=Change Rank;rank=[rank]'>[rank]</a></li>"
 							temp += "</ul>"
 						else
-							alert(usr, "You do not have the required rank to do this!")
+							alert(usr, "Your access is not sufficient to do this!")
 //TEMPORARY MENU FUNCTIONS
 			else//To properly clear as per clear screen.
 				temp=null
@@ -910,6 +916,7 @@ What a mess.*/
 							active1.fields["rank"] = strip_html(href_list["rank"])
 							if(href_list["rank"] in get_all_jobs())
 								active1.fields["real_rank"] = href_list["real_rank"]
+							active1.fields["hud"] = get_hud_by_jobname(active1.fields["rank"])
 
 					if("Change Criminal Status")
 						if(active2)
