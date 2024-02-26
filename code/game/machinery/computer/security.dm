@@ -19,7 +19,7 @@
 	var/order = 1 // -1 = Descending - 1 = Ascending
 	light_color = LIGHT_COLOR_RED
 	var/can_change_job
-	var/can_set_arrest
+	var/can_set_security
 
 /obj/machinery/computer/secure_data/Initialize(mapload, obj/item/circuitboard/C)
 	. = ..()
@@ -470,7 +470,7 @@ What a mess.*/
 				active1 = null
 				active2 = null
 				can_change_job = null
-				can_set_arrest = null
+				can_set_security = null
 				playsound(src, 'sound/machines/terminal_off.ogg', 50, FALSE)
 
 			if("Log In")
@@ -482,7 +482,7 @@ What a mess.*/
 					authenticated = M.name
 					rank = JOB_NAME_AI
 					can_change_job = TRUE
-					can_set_arrest = TRUE
+					can_set_security = TRUE
 					screen = 1
 				else if(IsAdminGhost(M))
 					active1 = null
@@ -490,7 +490,7 @@ What a mess.*/
 					authenticated = M.client.holder.admin_signature
 					rank = JOB_CENTCOM_CENTRAL_COMMAND
 					can_change_job = TRUE
-					can_set_arrest = TRUE
+					can_set_security = TRUE
 					screen = 1
 				else if(I && check_access(I))
 					active1 = null
@@ -500,7 +500,7 @@ What a mess.*/
 					if(ACCESS_CHANGE_IDS in I.access)
 						can_change_job = TRUE
 					if(ACCESS_SEC_RECORDS in I.access)
-						can_set_arrest = TRUE
+						can_set_security = TRUE
 					screen = 1
 				else
 					to_chat(usr, "<span class='danger'>Unauthorized Access.</span>")
@@ -762,7 +762,7 @@ What a mess.*/
 							if(istype(active2, /datum/data/record))
 								active2.fields["id"] = t1
 					if("fingerprint")
-						if(!can_set_arrest)
+						if(!can_set_security)
 							alert(usr, "Your access is not sufficient to do this!")
 						else if(istype(active1, /datum/data/record))
 							var/t1 = stripped_input(usr, "Please input fingerprint hash:", "Secure. records", active1.fields["fingerprint"], null)
@@ -788,49 +788,43 @@ What a mess.*/
 								return
 							active1.fields["species"] = t1
 					if("upd_photo_front")
-						if(!can_set_arrest)
-							alert(usr, "Your access is not sufficient to do this!")
-						else
-							var/datum/picture/picture = get_picture(usr)
-							if(picture)
-								qdel(active1.fields["photo_front"])
-								//Lets center it to a 32x32.
-								var/icon/I = picture.picture_image
-								var/w = I.Width()
-								var/h = I.Height()
-								var/dw = w - 32
-								var/dh = w - 32
-								I.Crop(dw/2, dh/2, w - dw/2, h - dh/2)
-								var/obj/item/photo/new_photo = new
-								new_photo.picture = picture
-								active1.fields["photo_front"] = new_photo
+						var/datum/picture/picture = get_picture(usr)
+						if(picture)
+							qdel(active1.fields["photo_front"])
+							//Lets center it to a 32x32.
+							var/icon/I = picture.picture_image
+							var/w = I.Width()
+							var/h = I.Height()
+							var/dw = w - 32
+							var/dh = w - 32
+							I.Crop(dw/2, dh/2, w - dw/2, h - dh/2)
+							var/obj/item/photo/new_photo = new
+							new_photo.picture = picture
+							active1.fields["photo_front"] = new_photo
 					if("print_photo_front")
 						if(active1.fields["photo_front"])
 							if(istype(active1.fields["photo_front"], /datum/picture))
 								var/datum/picture/P = active1.fields["photo_front"]
 								print_photo(P.picture_image, active1.fields["name"])
 					if("upd_photo_side")
-						if(!can_set_arrest)
-							alert(usr, "Your access is not sufficient to do this!")
-						else
-							var/datum/picture/picture = get_picture(usr)
-							if(picture)
-								qdel(active1.fields["photo_side"])
-								//Lets center it to a 32x32.
-								var/icon/I = picture.picture_image
-								var/w = I.Width()
-								var/h = I.Height()
-								var/dw = w - 32
-								var/dh = w - 32
-								I.Crop(dw/2, dh/2, w - dw/2, h - dh/2)
-								active1.fields["photo_side"] = picture
+						var/datum/picture/picture = get_picture(usr)
+						if(picture)
+							qdel(active1.fields["photo_side"])
+							//Lets center it to a 32x32.
+							var/icon/I = picture.picture_image
+							var/w = I.Width()
+							var/h = I.Height()
+							var/dw = w - 32
+							var/dh = w - 32
+							I.Crop(dw/2, dh/2, w - dw/2, h - dh/2)
+							active1.fields["photo_side"] = picture
 					if("print_photo_side")
 						if(active1.fields["photo_side"])
 							if(istype(active1.fields["photo_side"], /datum/picture))
 								var/datum/picture/P = active1.fields["photo_side"]
 								print_photo(P.picture_image, active1.fields["name"])
 					if("crim_add")
-						if(!can_set_arrest)
+						if(!can_set_security)
 							alert(usr, "Your access is not sufficient to do this!")
 						else if(istype(active1, /datum/data/record))
 							var/t1 = stripped_input(usr, "Please input crime name:", "Secure. records", "", null)
@@ -841,7 +835,7 @@ What a mess.*/
 							GLOB.data_core.addCrime(active1.fields["id"], crime)
 							usr.investigate_log(" has added a crime '<strong>[t1]</strong>': '[t2]' to [active1.fields["name"]] via security records.", INVESTIGATE_RECORDS)
 					if("crim_delete")
-						if(!can_set_arrest)
+						if(!can_set_security)
 							alert(usr, "Your access is not sufficient to do this!")
 						else if(istype(active1, /datum/data/record))
 							if(href_list["cdataid"])
@@ -849,7 +843,7 @@ What a mess.*/
 									return
 								GLOB.data_core.removeCrime(active1.fields["id"], href_list["cdataid"])
 					if("add_details")
-						if(!can_set_arrest)
+						if(!can_set_security)
 							alert(usr, "Your access is not sufficient to do this!")
 						else if(istype(active1, /datum/data/record))
 							if(href_list["cdataid"])
@@ -859,7 +853,7 @@ What a mess.*/
 								GLOB.data_core.addCrimeDetails(active1.fields["id"], href_list["cdataid"], t1)
 								usr.investigate_log(" has set crime details ([t1]) to [active1.fields["name"]] via security records.", INVESTIGATE_RECORDS)
 					if("citation_add")
-						if(!can_set_arrest)
+						if(!can_set_security)
 							alert(usr, "Your access is not sufficient to do this!")
 						else if(istype(active1, /datum/data/record))
 							var/maxFine = CONFIG_GET(number/maxfine)
@@ -893,7 +887,7 @@ What a mess.*/
 							GLOB.data_core.addCitation(active1.fields["id"], crime)
 							usr.investigate_log(" has added a citation '<strong>[t1]</strong>' ([fine] credits) to [active1.fields["name"]] via security records.", INVESTIGATE_RECORDS)
 					if("citation_delete")
-						if(!can_set_arrest)
+						if(!can_set_security)
 							alert(usr, "Your access is not sufficient to do this!")
 						else if(istype(active1, /datum/data/record))
 							if(href_list["cdataid"])
@@ -902,7 +896,7 @@ What a mess.*/
 								usr.investigate_log(" has deleted [active1.fields["name"]]'s citation '[active1.fields["id"]]'.", INVESTIGATE_RECORDS)
 								GLOB.data_core.removeCitation(active1.fields["id"], href_list["cdataid"])
 					if("notes")
-						if(!can_set_arrest)
+						if(!can_set_security)
 							alert(usr, "Your access is not sufficient to do this!")
 						else if(istype(active2, /datum/data/record))
 							var/t1 = stripped_input(usr, "Please summarize notes:", "Secure. records", active2.fields["notes"], null)
@@ -911,7 +905,7 @@ What a mess.*/
 							active2.fields["notes"] = t1
 							usr.investigate_log(" has set [active1.fields["name"]]'s security records important notes to '[t1]'.", INVESTIGATE_RECORDS)
 					if("criminal")
-						if(!can_set_arrest)
+						if(!can_set_security)
 							alert(usr, "Your access is not sufficient to do this!")
 						else if(istype(active2, /datum/data/record) && )
 							temp = "<h5>Criminal Status:</h5>"
