@@ -179,7 +179,7 @@
 						break
 				if(component_check)
 					P.play_tool_sound(src)
-					var/obj/machinery/new_machine = new circuit.build_path(loc)
+					var/obj/machinery/new_machine = new circuit.build_path(loc, PRE_INIT(src.contents))
 					if(istype(new_machine))
 						// Machines will init with a set of default components. Move to nullspace so we don't trigger handle_atom_del, then qdel.
 						// Finally, replace with this frame's parts.

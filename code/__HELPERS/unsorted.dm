@@ -6,3 +6,5 @@
 /proc/client_alert(client/C, message, title)
 	set waitfor = 0
 	alert(C, message, title)
+
+#define PRE_INIT(args...) (new /datum/PreInit(list(##args)))
