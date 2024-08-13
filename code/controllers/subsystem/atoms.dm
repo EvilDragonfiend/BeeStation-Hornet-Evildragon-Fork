@@ -148,7 +148,18 @@ SUBSYSTEM_DEF(atoms)
 	var/start_tick = world.time
 	#endif
 
-	var/result = A.Initialize(arglist(arguments))
+	var/result
+
+	var/datum/PreInit/PreInit = locate() in arguments
+	if(PreInit)
+		A.PreInitialize(arglist(PreInit.pre_arguments))
+		PreInit.pre_arguments.Cut()
+		PreInit.pre_arguments = null
+		result = A.Initialize(arglist(arguments - PreInit))
+		del(PreInit)
+		PreInit = null
+	else
+		result = A.Initialize(arglist(arguments))
 
 	#ifdef UNIT_TESTS
 	if(start_tick != world.time)

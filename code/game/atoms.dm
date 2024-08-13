@@ -251,6 +251,10 @@
 
 	return INITIALIZE_HINT_NORMAL
 
+/atom/proc/PreInitialize(...)
+	message_admins("PreInit is called from [src]")
+	return
+
 /**
   * Late Intialization, for code that should run after all atoms have run Intialization
   *
