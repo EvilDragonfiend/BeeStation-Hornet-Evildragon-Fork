@@ -49,3 +49,22 @@ Dockerfile @crossedfall
 /tgui/packages/tgui/styles/interfaces/
 /tgui/packages/tgui-panel/styles/goon/chat-dark.scss
 /tgui/packages/tgui-panel/styles/goon/chat-light.scss
+
+# evildragonfiend
+
+/code/__DEFINES/is_helpers.dm @evildragonfiend
+/code/__DEFINES/vv.dm @evildragonfiend
+/code/_globalvars/lists/admin.dm @evildragonfiend
+/code/modules/admin/view_variables @evildragonfiend
+/html/admin/view_variables.css @evildragonfiend
+
+/code/__DEFINES/department.dm @evildragonfiend
+/code/controllers/subsystem/department.dm @evildragonfiend
+
+/code/__DEFINES/economy.dm @evildragonfiend
+/code/controllers/subsystem/economy.dm @evildragonfiend
+/code/modules/economy/account.dm @evildragonfiend
+
+/code/__DEFINES/jobs.dm @evildragonfiend
+/code/__HELPERS/jobs.dm @evildragonfiend
+/code/controllers/subsystem/job.dm @evildragonfiend
