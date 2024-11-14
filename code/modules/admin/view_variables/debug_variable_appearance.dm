@@ -62,17 +62,6 @@ CREATION_TEST_IGNORE_SELF(/image/appearance)
 
 	return used_variables
 
-/// debug_variable() proc but made for /appearance type specifically
-/proc/debug_variable_appearance(var_name, appearance)
-	var/value
-	try
-		value = locate_appearance_variable(var_name, appearance)
-	catch
-		return "<li style='backgroundColor:white'>(READ ONLY) <font color='blue'>[var_name] = (untrackable)</font></li>"
-	if(value == RESULT_VARIABLE_NOT_FOUND)
-		return "<li style='backgroundColor:white'>(READ ONLY) [var_name] <font color='blue'>(Undefined var name in switch)</font></li>"
-	return "<li style='backgroundColor:white'>(READ ONLY) [var_name] = [_debug_variable_value(var_name, value, 0, appearance, sanitize = TRUE, display_flags = NONE)]</li>"
-
 /// manually locate a variable through string value.
 /// appearance type needs a manual var referencing because it doesn't have "vars" variable internally.
 /// There's no way doing this in a fancier way.
@@ -199,16 +188,6 @@ CREATION_TEST_IGNORE_SELF(/image/appearance)
 			return appearance.cached_ref
 	return RESULT_VARIABLE_NOT_FOUND
 
-/// Shows a header name on top when you investigate an appearance
-/proc/vv_get_header_appearance(image/thing)
-	. = list()
-	var/icon_name = "<b>[thing.icon || "null"]</b><br/>"
-	. += replacetext(icon_name, "icons/obj", "") // shortens the name. We know the path already.
-	if(thing.icon)
-		. += thing.icon_state ? "\"[thing.icon_state]\"" : "(icon_state = null)"
-
-/image/vv_get_header() // it should redirect to global proc version because /appearance can't call a proc, unless we want dupe code here
-	return vv_get_header_appearance(src)
 
 /// Makes a format name for shortened vv name.
 /proc/get_appearance_vv_summary_name(image/thing)
@@ -219,14 +198,6 @@ CREATION_TEST_IGNORE_SELF(/image/appearance)
 		return "[icon_file_name]:[thing.icon_state]"
 	else
 		return "[icon_file_name]"
-
-/proc/vv_get_dropdown_appearance(image/thing)
-	. = list()
-	// Don't add any vv option carelessly unless you have a good reason to add one for /appearance.
-	// /appearance type shouldn't allow general options. Even "Mark Datum" is a questionable behaviour here.
-	VV_DROPDOWN_OPTION_APPEARANCE(thing, "", "---")
-	VV_DROPDOWN_OPTION_APPEARANCE(thing, VV_HK_EXPOSE, "Show VV To Player") // only legit option
-	return .
 
 #undef ADD_UNUSED_VAR
 #undef RESULT_VARIABLE_NOT_FOUND

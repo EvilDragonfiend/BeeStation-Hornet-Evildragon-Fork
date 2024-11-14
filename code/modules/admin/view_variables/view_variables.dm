@@ -65,7 +65,8 @@
 	title = "[thing] ([REF(thing)]) = [type]"
 	var/formatted_type = replacetext("[type]", "/", "<wbr>/")
 
-	var/list/header = islist ? list("<b>/list</b>") : (isappearance ? vv_get_header_appearance(thing) : thing.vv_get_header())
+	var/static/datum/dm_type/appearance/app_mirror = new()
+	var/list/header = islist ? list("<b>/list</b>") : (isappearance ? app_mirror.vv_get_header__dm_type(thing) : thing.vv_get_header())
 
 	var/ref_line = "@[copytext(refid, 2, -1)]" // get rid of the brackets, add a @ prefix for copy pasting in asay
 
@@ -100,13 +101,13 @@
 			var/link = dropdownoptions[name]
 			dropdownoptions[i] = "<option value[link? "='[link]'":""]>[name]</option>"
 	else if(isappearance)
-		dropdownoptions = vv_get_dropdown_appearance(thing)
+		dropdownoptions = app_mirror.get_dropdown__dm_type(thing)
 	else
 		dropdownoptions = thing.vv_get_dropdown()
 
 	var/list/names = list()
 	if(isappearance)
-		var/static/list/virtual_appearance_vars = build_virtual_appearance_vars()
+		var/static/list/virtual_appearance_vars = app_mirror.get_virtual_var_list__dm_type()
 		names = virtual_appearance_vars.Copy()
 	else if(!islist)
 		for(var/varname in thing.vars)
@@ -126,7 +127,7 @@
 	else if(isappearance)
 		names = sort_list(names)
 		for(var/varname in names)
-			variable_html += debug_variable_appearance(varname, thing)
+			variable_html += app_mirror.debug_variable__dm_type(varname, thing)
 	else
 		names = sort_list(names)
 		for(var/varname in names)
