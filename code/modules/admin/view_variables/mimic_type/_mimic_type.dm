@@ -1,33 +1,34 @@
-/datum/dm_type
+/datum/mimic_type
 
-/datum/dm_type/proc/get_vv_list__dm_type(thing)
+/datum/mimic_type/proc/get_vv_list__mimic_type(thing)
 	return
 
-/datum/dm_type/proc/get_dropdown__dm_type(thing)
+/datum/mimic_type/proc/get_dropdown__mimic_type(thing)
 	return
 
-/datum/dm_type/proc/vv_get_header__dm_type(thing)
+/datum/mimic_type/proc/vv_get_header__mimic_type(thing)
 	return
 
-/datum/dm_type/proc/get_virtual_var_list__dm_type(thing)
+/datum/mimic_type/proc/get_virtual_var_list__mimic_type(thing)
 	return
 
-/datum/dm_type/proc/debug_variable__dm_type(varname, thing)
+/datum/mimic_type/proc/debug_variable__mimic_type(varname, thing)
 	return
 
-/datum/dm_type/proc/locate_variable__dm_type(thing)
+/datum/mimic_type/proc/locate_variable__mimic_type(thing)
 	return
 
-/datum/dm_type/appearance
+////////////////////////
+/datum/mimic_type/appearance
 	var/x
 	var/icon
 	var/icon_state
 
-/datum/dm_type/appearance/get_dropdown__dm_type(thing)
+/datum/mimic_type/appearance/get_dropdown__mimic_type(thing)
 	. = list("NO-OPTION")
 	return .
 
-/datum/dm_type/appearance/vv_get_header__dm_type(var/datum/dm_type/appearance/thing)
+/datum/mimic_type/appearance/vv_get_header__mimic_type(var/datum/mimic_type/appearance/thing)
 	. = list()
 	var/icon_name = "<b>[thing.icon || "null"]</b><br/>"
 	. += replacetext(icon_name, "icons/obj", "") // shortens the name. We know the path already.
@@ -35,13 +36,13 @@
 		. += thing.icon_state ? "\"[thing.icon_state]\"" : "(icon_state = null)"
 
 /image/vv_get_header()
-	var/static/datum/dm_type/appearance/app_mirror = new()
-	return app_mirror.vv_get_header__dm_type(src)
+	var/static/datum/mimic_type/appearance/app_mirror = new()
+	return app_mirror.vv_get_header__mimic_type(src)
 
-/datum/dm_type/appearance/get_virtual_var_list__dm_type(var/datum/dm_type/appearance/thing)
+/datum/mimic_type/appearance/get_virtual_var_list__mimic_type(var/datum/mimic_type/appearance/thing)
 	return list("x", "icon", "icon_state")
 
-/datum/dm_type/appearance/debug_variable__dm_type(var_name, var/datum/dm_type/appearance/thing)
+/datum/mimic_type/appearance/debug_variable__mimic_type(var_name, var/datum/mimic_type/appearance/thing)
 	var/value
 	try
 		value = locate_appearance_variable(var_name, thing)
