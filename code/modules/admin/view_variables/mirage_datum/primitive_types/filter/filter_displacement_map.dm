@@ -1,4 +1,4 @@
-/primitive/filter/displacement_map
+/datum/mirage_type/filter/displacement_map
 	pseudo_type = "/filter/displacement_map"
 	filter_type_string = "displace"
 
@@ -9,7 +9,7 @@
 	var/render_source
 	var/flags
 
-/primitive/filter/displacement_map/locate_var_pointer(primitive/filter/displacement_map/p_thing, varname)
+/datum/mirage_type/filter/displacement_map/locate_var_pointer(datum/mirage_type/filter/displacement_map/p_thing, varname)
 	switch(varname)
 		LOCATE_VAR_POINTER(x)
 		LOCATE_VAR_POINTER(y)

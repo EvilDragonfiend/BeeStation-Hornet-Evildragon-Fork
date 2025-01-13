@@ -1,10 +1,10 @@
-/primitive/pixloc
+/datum/mirage_type/pixloc
 	pseudo_type = "/pixloc"
 	var/x
 	var/y
 	var/z
 
-/primitive/pixloc/locate_var_pointer(primitive/pixloc/p_thing, varname)
+/datum/mirage_type/pixloc/locate_var_pointer(datum/mirage_type/pixloc/p_thing, varname)
 	switch(varname)
 		LOCATE_VAR_POINTER(x)
 		LOCATE_VAR_POINTER(y)

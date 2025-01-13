@@ -1,4 +1,4 @@
-/primitive/filter/alpha_mask
+/datum/mirage_type/filter/alpha_mask
 	pseudo_type = "/filter/alpha_mask"
 	filter_type_string = "alpha"
 
@@ -8,7 +8,7 @@
 	var/render_source
 	var/flags = NONE
 
-/primitive/filter/alpha_mask/locate_var_pointer(primitive/filter/alpha_mask/p_thing, varname)
+/datum/mirage_type/filter/alpha_mask/locate_var_pointer(datum/mirage_type/filter/alpha_mask/p_thing, varname)
 	switch(varname)
 		LOCATE_VAR_POINTER(x)
 		LOCATE_VAR_POINTER(y)
