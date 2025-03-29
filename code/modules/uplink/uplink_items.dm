@@ -358,8 +358,8 @@ GLOBAL_LIST_INIT(illegal_tech_blacklist, typecacheof(list(
 	var/index = rand(1, 20)
 	starting_crate_value = index * 5
 	if(index == 1)
-		to_chat(user, "<span class='warning'><b>Incoming transmission from the syndicate.</b></span>")
-		to_chat(user, "<span class='warning'>You feel an overwhelming sense of pride and accomplishment.</span>")
+		to_chat(user, span_warning("<b>Incoming transmission from the syndicate.</b>"))
+		to_chat(user, span_warning("You feel an overwhelming sense of pride and accomplishment."))
 		var/obj/item/clothing/mask/joy/funny_mask = new(get_turf(user))
 		ADD_TRAIT(funny_mask, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 		var/obj/item/I = user.get_item_by_slot(ITEM_SLOT_MASK)
@@ -530,7 +530,7 @@ GLOBAL_LIST_INIT(illegal_tech_blacklist, typecacheof(list(
 	name = "Bananium Energy Sword"
 	desc = "An energy sword that deals no damage, but will slip anyone it contacts, be it by melee attack, thrown \
 	impact, or just stepping on it. Beware friendly fire, as even anti-slip shoes will not protect against it."
-	item = /obj/item/melee/transforming/energy/sword/bananium
+	item = /obj/item/melee/energy/sword/bananium
 	cost = 3
 	surplus = 0
 	purchasable_from = UPLINK_CLOWN_OPS
@@ -593,7 +593,7 @@ GLOBAL_LIST_INIT(illegal_tech_blacklist, typecacheof(list(
 	name = "Energy Sword"
 	desc = "The energy sword is an edged weapon with a blade of pure energy. The sword is small enough to be \
 			pocketed when inactive. Activating it produces a loud, distinctive noise."
-	item = /obj/item/melee/transforming/energy/sword/saber
+	item = /obj/item/melee/energy/sword/saber
 	cost = 8
 	purchasable_from = ~UPLINK_CLOWN_OPS
 
@@ -605,6 +605,15 @@ GLOBAL_LIST_INIT(illegal_tech_blacklist, typecacheof(list(
 	cost = 16
 	surplus = 20
 	purchasable_from = UPLINK_NUKE_OPS
+
+/datum/uplink_item/dangerous/syndicate_teleporter
+	name = "Experimental Syndicate Jaunter"
+	desc = "The Syndicate jaunter is a handheld device that jaunts the user 4-8 meters forward. \
+		Anyone caught in the wake of the jaunter will be knocked off their feet and receive minor damage. \
+		Due to the Syndicate's more limited research of teleportation technologies, it is incapable of phasing the user \
+		through solid matter nor is it capable of teleporting them across longer ranges."
+	item = /obj/item/teleporter
+	cost = 7
 
 /datum/uplink_item/dangerous/flamethrower
 	name = "Flamethrower"
@@ -656,7 +665,7 @@ GLOBAL_LIST_INIT(illegal_tech_blacklist, typecacheof(list(
 /datum/uplink_item/dangerous/carbine
 	name = "M-90gl Carbine"
 	desc = "A fully-loaded, specialized three-round burst carbine that fires 5.56mm ammunition from a 30 round magazine \
-			with a toggleable 40mm underbarrel grenade launcher."
+			with a 40mm underbarrel grenade launcher. Use secondary-fire to fire the grenade launcher."
 	item = /obj/item/gun/ballistic/automatic/m90
 	cost = 14
 	surplus = 50
@@ -786,6 +795,13 @@ GLOBAL_LIST_INIT(illegal_tech_blacklist, typecacheof(list(
 	purchasable_from = UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS
 	cost = 12
 	surplus = 0
+
+/datum/uplink_item/stealthy_weapons/art_of_thievery
+	name = "The Art of Thievery"
+	desc = "A manual that teaches a single user how to pickpocket people without them noticing. Not guaranteed to work on all targets."
+	item = /obj/item/book/granter/art_of_thievery
+	cost = 5
+	surplus = 40
 
 /datum/uplink_item/stealthy_weapons/dart_pistol
 	name = "Dart Pistol"
@@ -1764,14 +1780,6 @@ GLOBAL_LIST_INIT(illegal_tech_blacklist, typecacheof(list(
 	surplus = 1
 	illegal_tech = FALSE
 
-/datum/uplink_item/device_tools/syndicate_teleporter
-	name = "Experimental Syndicate Jaunter"
-	desc = "The Syndicate jaunter is a handheld device that jaunts the user 4-8 meters forward. \
-		Anyone caught in the wake of the jaunter will be knocked off their feet and receive minor damage. \
-		Due to the Syndicate's more limited research of teleportation technologies, it is incapable of phasing the user \
-		through solid matter nor is it capable of teleporting them across longer ranges."
-	item = /obj/item/teleporter
-	cost = 7
 
 /datum/uplink_item/device_tools/frame
 	name = "F.R.A.M.E. PDA Disk"
@@ -1794,13 +1802,13 @@ GLOBAL_LIST_INIT(illegal_tech_blacklist, typecacheof(list(
 
 /datum/uplink_item/device_tools/failsafe/spawn_item(spawn_path, mob/user, datum/component/uplink/U)
 	if(!U || !U.unlock_code)
-		to_chat(user, "<span class='warning'>A failsafe code could not be assigned to this uplink.")
+		to_chat(user, span_warning("A failsafe code could not be assigned to this uplink."))
 		return
 	do
 		U.failsafe_code = U.generate_code()
 	while(islist(U.failsafe_code) ? compare_list(U.failsafe_code, U.unlock_code) : U.failsafe_code == U.unlock_code)
 	var/code = "[islist(U.failsafe_code) ? english_list(U.failsafe_code) : U.failsafe_code]"
-	to_chat(user, "<span class='warning'>The new failsafe code for this uplink is now : [code].</span>")
+	to_chat(user, span_warning("The new failsafe code for this uplink is now : [code]."))
 	if(user.mind)
 		user.mind.store_memory("Failsafe code for [U.parent] : [code]")
 	return U.parent //For log icon
@@ -1947,7 +1955,15 @@ GLOBAL_LIST_INIT(illegal_tech_blacklist, typecacheof(list(
 			emitted as heat and light by objects. Hotter objects, such as warm bodies, cybernetic organisms \
 			and artificial intelligence cores emit more of this light than cooler objects like walls and airlocks."
 	item = /obj/item/clothing/glasses/thermal/syndi
-	cost = 3
+	cost = 2
+
+
+/datum/uplink_item/device_tools/guerrillagloves
+	name = "Guerrilla Gloves"
+	desc = "A pair of highly robust combat gripper gloves that excels at performing takedowns at close range, with an added lining of insulation. Careful not to hit a wall!"
+	item = /obj/item/clothing/gloves/tackler/combat/insulated
+	purchasable_from = (UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
+	cost = 2
 
 // Implants
 /datum/uplink_item/implants
@@ -2251,7 +2267,7 @@ GLOBAL_LIST_INIT(illegal_tech_blacklist, typecacheof(list(
 	name = "Bananium Energy Sword"
 	desc = "An energy sword that deals no damage, but will slip anyone it contacts, be it by melee attack, thrown \
 	impact, or just stepping on it. Beware friendly fire, as even anti-slip shoes will not protect against it."
-	item = /obj/item/melee/transforming/energy/sword/bananium
+	item = /obj/item/melee/energy/sword/bananium
 	cost = 5
 	surplus = 0
 	restricted_roles = list(JOB_NAME_CLOWN)
@@ -2416,7 +2432,7 @@ GLOBAL_LIST_INIT(illegal_tech_blacklist, typecacheof(list(
 	name = "Energy Saw"
 	desc = "A deadly energy saw. Comes in a slick black finish."
 	cost = 5
-	item = /obj/item/melee/transforming/energy/sword/esaw
+	item = /obj/item/melee/energy/sword/esaw
 	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Paramedic", "Brig Physician")
 
 /datum/uplink_item/role_restricted/esaw_arm
@@ -2472,6 +2488,15 @@ GLOBAL_LIST_INIT(illegal_tech_blacklist, typecacheof(list(
 	item = /obj/item/autosurgeon/syndicate/laser_arm
 	restricted_roles = list(JOB_NAME_ROBOTICIST, JOB_NAME_RESEARCHDIRECTOR)
 
+/datum/uplink_item/role_restricted/tc_rod
+	name = "Telecrystal Fuel Rod"
+	desc = "This special fuel rod has eight material slots that can be inserted with telecrystals, \
+			once the rod has been fully depleted, you will be able to harvest the extra telecrystals. \
+			Please note: This Rod fissiles much faster than it's nanotrasen counterpart, it doesn't take \
+			much to overload the reactor with these..."
+	item = /obj/item/fuel_rod/material/telecrystal
+	cost = 7
+	restricted_roles = list(JOB_NAME_STATIONENGINEER, JOB_NAME_ATMOSPHERICTECHNICIAN, JOB_NAME_CHIEFENGINEER)
 
 // Pointless
 /datum/uplink_item/badass
@@ -2587,11 +2612,3 @@ GLOBAL_LIST_INIT(illegal_tech_blacklist, typecacheof(list(
 	surplus = 0
 	disabled = TRUE	// #11346 Currently in a broken state, lasso'd mobs will never unregister a target once they have locked onto one, making them unusable.
 
-/datum/uplink_item/device_tools/tc_rod
-	name = "Telecrystal Fuel Rod"
-	desc = "This special fuel rod has eight material slots that can be inserted with telecrystals, \
-			once the rod has been fully depleted, you will be able to harvest the extra telecrystals. \
-			Please note: This Rod fissiles much faster than it's nanotrasen counterpart, it doesn't take \
-			much to overload the reactor with these..."
-	item = /obj/item/fuel_rod/material/telecrystal
-	cost = 7
