@@ -5,7 +5,7 @@
 	var/x
 	var/y
 	var/size
-	var/color/color = "#000000"
+	var/color = "#000000"
 	var/offset = 0
 	var/density = 10
 	var/threshold = 0.5

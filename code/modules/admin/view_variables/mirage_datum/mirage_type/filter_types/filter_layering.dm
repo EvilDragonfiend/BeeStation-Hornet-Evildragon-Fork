@@ -7,8 +7,8 @@
 	var/icon/icon
 	var/render_source
 	var/flags = FILTER_OVERLAY // ?
-	var/color/color
-	var/transform/transform
+	var/color
+	var/matrix/transform
 	var/blend_mode
 
 /datum/mirage_type/filter/layering/locate_var_pointer(datum/mirage_type/filter/layering/p_thing, varname)

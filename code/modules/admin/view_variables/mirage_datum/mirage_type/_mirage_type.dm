@@ -1,3 +1,5 @@
+GLOBAL_DATUM_INIT(mirage_type, /datum/mirage_type, new)
+
 /datum/mirage_type
 	var/pseudo_type = "/primitive"
 

@@ -1,3 +1,4 @@
+GLOBAL_DATUM_INIT(mirage_filter, /datum/mirage_type/filter, new)
 /datum/mirage_type/filter
 	var/filter_type_string
 	var/static/datum/mirage_type/filter/alpha_mask/alpha_mask = new()
@@ -19,9 +20,7 @@
 	if(varname == NAMEOF(src, type)) // type is /datum var already
 		return ..()
 
-	var/datum/mirage_type/filter/temp = *p_thing
-	var/filter_type = temp.type
-	switch(filter_type)
+	switch(*p_thing.type)
 		LOCATE_FILTER_VAR_POINTER(alpha_mask)
 		LOCATE_FILTER_VAR_POINTER(angular_blur)
 		LOCATE_FILTER_VAR_POINTER(bloom)

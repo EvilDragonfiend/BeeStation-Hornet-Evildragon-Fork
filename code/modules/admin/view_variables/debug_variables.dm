@@ -154,6 +154,11 @@
 
 			return "[a_open][list_type] ([length(list_value)])[a_close]<ul>[items.Join()]</ul>"
 
+	//if(isvector(value))
+
+	//if(ispixloc(value))
+
+
 	if(name in GLOB.bitfields)
 		var/list/flags = list()
 		for (var/i in GLOB.bitfields[name])

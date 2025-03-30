@@ -82,8 +82,10 @@ GLOBAL_DATUM_INIT(vv_tester, /datum/view_variables_tester, new)
 
 #if DM_VERSION > 515
 	// callee
-	pixloc = pixloc(3, 4, 5)
+	pixloc = pixloc(3, 4, 1)
 	vector = vector(3, 4, 5)
+	GLOB.refid_pixloc = TYPEID(pixloc)
+	GLOB.refid_vector = TYPEID(vector)
 #endif
 
 /datum/view_variables_tester/vv_get_vars_list()

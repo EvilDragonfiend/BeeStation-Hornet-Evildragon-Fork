@@ -3,7 +3,7 @@
 	filter_type_string = "outline"
 
 	var/size = 1
-	var/color/color = "#000000"
+	var/color = "#000000"
 	var/flags = 0
 // 0 == Ordinary outline
 // OUTLINE_SHARP == Avoid antialiasing in the outline
