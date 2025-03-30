@@ -30,7 +30,7 @@
 
 /datum/mirage_type/appearance/locate_var_pointer(datum/mirage_type/appearance/p_thing, varname)
 	switch(varname)
-		LOCATE_VAR_POINTER(caller)
+		LOCATE_VAR_POINTER(alpha)
 		LOCATE_VAR_POINTER(appearance_flags)
 		LOCATE_VAR_POINTER(blend_mode)
 		LOCATE_VAR_POINTER(color)

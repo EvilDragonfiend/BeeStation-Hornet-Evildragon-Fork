@@ -102,7 +102,6 @@
 	var/isfilter = isfilter(value)
 	var/is_child_filter = isfilter && !isdatum(owner) && !isappearance(owner) // 'child_filter' means each /filters in /atom.filters
 	if(is_child_filter)
-		return
 		return "/filters\[child\] ([span_value("[value.type]")])"
 
 	if(isfile(value))

@@ -199,7 +199,7 @@
 		if(STYLE_DATUM)
 			varname_list = thing.vv_get_vars_list()
 		if(STYLE_APPEARANCE)
-			var/static/list/virtual_appearance_vars = GLOB.mirate_type.appearance.vv_get_vars_list()
+			var/static/list/virtual_appearance_vars = GLOB.mirage_type.appearance.vv_get_vars_list()
 			varname_list = virtual_appearance_vars.Copy()
 		// Does nothing to LIST STYLE defines
 
