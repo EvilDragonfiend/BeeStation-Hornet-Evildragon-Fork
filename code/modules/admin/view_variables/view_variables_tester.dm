@@ -30,6 +30,7 @@ GLOBAL_DATUM_INIT(vv_tester, /datum/view_variables_tester, new)
 	var/client/client
 	var/savefile/savefile
 	var/list/list
+	var/list/filter
 
 	var/static/list/true_vars
 	var/static/__________________ // separator
@@ -41,8 +42,22 @@ GLOBAL_DATUM_INIT(vv_tester, /datum/view_variables_tester, new)
 #endif
 
 /datum/view_variables_tester/New()
+	setupt_true_vars()
+	turf = locate(1,1,1)
+	filter = filter(type="outline", size=1, color=rgb(255,0,0))
+
+#if DM_VERSION > 515
+	// callee
+	pixloc = pixloc(3, 4, 1)
+	vector = vector(3, 4, 5)
+	GLOB.refid_pixloc = TYPEID(pixloc)
+	GLOB.refid_vector = TYPEID(vector)
+#endif
+
+
+/datum/view_variables_tester/proc/setupt_true_vars()
+	// need to do this manually because sorting is miserable
 	if(isnull(true_vars))
-		// need to do this manually because sorting is miserable
 		true_vars = list(
 			NAMEOF_SRC(datum),
 			NAMEOF_SRC(atom),
@@ -76,17 +91,8 @@ GLOBAL_DATUM_INIT(vv_tester, /datum/view_variables_tester, new)
 			NAMEOF_SRC(client),
 			NAMEOF_SRC(savefile),
 			NAMEOF_SRC(list),
+			NAMEOF_SRC(filter)
 		)
-
-	turf = locate(1,1,1)
-
-#if DM_VERSION > 515
-	// callee
-	pixloc = pixloc(3, 4, 1)
-	vector = vector(3, 4, 5)
-	GLOB.refid_pixloc = TYPEID(pixloc)
-	GLOB.refid_vector = TYPEID(vector)
-#endif
 
 /datum/view_variables_tester/vv_get_vars_list()
 	return true_vars

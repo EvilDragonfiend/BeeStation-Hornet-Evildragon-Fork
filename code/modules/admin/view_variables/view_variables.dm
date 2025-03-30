@@ -87,7 +87,7 @@
 		if(STYLE_DATUM)
 			header = thing.vv_get_header()
 		if(STYLE_APPEARANCE)
-			header = vv_get_header_appearance(thing)
+			header = GLOB.mirage_type.appearance.vv_get_header_primitive(thing)
 		if(STYLE_LIST, STYLE_SPECIAL_LIST, STYLE_READ_ONLY_LIST)
 			header = list("<b>/list</b>")
 
@@ -157,7 +157,7 @@
 		if(STYLE_DATUM)
 			dropdown_options = thing.vv_get_dropdown()
 		if(STYLE_APPEARANCE)
-			dropdown_options = vv_get_dropdown_appearance(thing)
+			dropdown_options = GLOB.mirage_type.appearance.vv_get_dropdown_primitive(thing)
 		if(STYLE_READ_ONLY_LIST)
 			dropdown_options = list(
 				"---",
@@ -199,7 +199,7 @@
 		if(STYLE_DATUM)
 			varname_list = thing.vv_get_vars_list()
 		if(STYLE_APPEARANCE)
-			var/static/list/virtual_appearance_vars = build_virtual_appearance_vars()
+			var/static/list/virtual_appearance_vars = GLOB.mirate_type.appearance.vv_get_vars_list()
 			varname_list = virtual_appearance_vars.Copy()
 		// Does nothing to LIST STYLE defines
 
@@ -216,7 +216,7 @@
 		if(STYLE_APPEARANCE)
 			varname_list = sort_list(varname_list)
 			for(var/each_varname in varname_list)
-				variable_html += debug_variable_appearance(each_varname, thing)
+				variable_html += GLOB.mirage_type.appearance.show_var(thing, each_varname)
 		if(STYLE_LIST, STYLE_SPECIAL_LIST, STYLE_READ_ONLY_LIST)
 			// There is only VV_READ_ONLY for now
 			var/list_flags = (read_only_special_list ? VV_READ_ONLY : null)
