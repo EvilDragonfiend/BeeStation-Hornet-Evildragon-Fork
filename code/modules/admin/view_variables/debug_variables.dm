@@ -102,7 +102,9 @@
 	var/isfilter = isfilter(value)
 	var/is_child_filter = isfilter && !isdatum(owner) && !isappearance(owner) // 'child_filter' means each /filters in /atom.filters
 	if(is_child_filter)
-		return "/filters\[child\] ([span_value("[value.type]")])"
+		return "<a href='byond://?_src_=vars;[HrefToken()];Vars=[REF(value)]'>/filters!! ([span_value("[GLOB.mirage_filter.show_vv_summary_name(value)]")]) [REF(value)]</a>"
+		//return "/filters!! [GLOB.mirage_filter.]"
+		//return "/filters\[child\] ([span_value("[value.type]")])"
 
 	if(isfile(value))
 		return span_value("'[value]'")

@@ -4,7 +4,6 @@
 	var/appearance_flags
 	var/blend_mode
 	var/color
-	var/icon_file_name
 	var/icon
 	var/icon_state
 	var/invisibility
@@ -34,7 +33,6 @@
 		LOCATE_VAR_POINTER(appearance_flags)
 		LOCATE_VAR_POINTER(blend_mode)
 		LOCATE_VAR_POINTER(color)
-		LOCATE_VAR_POINTER(icon_file_name)
 		LOCATE_VAR_POINTER(icon)
 		LOCATE_VAR_POINTER(icon_state)
 		LOCATE_VAR_POINTER(invisibility)
@@ -59,7 +57,6 @@
 
 /datum/mirage_type/appearance/set_var(p_thing, varname, val)
 	return
-
 
 /datum/mirage_type/appearance/vv_get_header_primitive(datum/mirage_type/appearance/thing)
 	. = list()

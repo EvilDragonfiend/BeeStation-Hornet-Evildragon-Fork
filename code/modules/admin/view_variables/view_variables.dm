@@ -216,7 +216,7 @@
 		if(STYLE_APPEARANCE)
 			varname_list = sort_list(varname_list)
 			for(var/each_varname in varname_list)
-				variable_html += GLOB.mirage_type.appearance.show_var(thing, each_varname)
+				variable_html += GLOB.mirage_type.appearance.vv_get_var_primitive(&thing, each_varname)
 		if(STYLE_LIST, STYLE_SPECIAL_LIST, STYLE_READ_ONLY_LIST)
 			// There is only VV_READ_ONLY for now
 			var/list_flags = (read_only_special_list ? VV_READ_ONLY : null)

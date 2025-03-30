@@ -41,3 +41,6 @@ GLOBAL_DATUM_INIT(mirage_filter, /datum/mirage_type/filter, new)
 	if(varname == NAMEOF(src, type)) // type is readonly variable
 		return
 	..()
+
+/datum/mirage_type/filter/show_vv_summary_name(datum/mirage_type/thing)
+	return pseudo_type
