@@ -5,7 +5,7 @@
 	},
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple,
 /obj/structure/lattice/catwalk,
-/turf/open/floor/engine,
+/turf/open/space/basic,
 /area/template_noop)
 "ap" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
@@ -23,7 +23,7 @@
 	dir = 5
 	},
 /obj/structure/lattice/catwalk,
-/turf/open/floor/engine,
+/turf/open/space/basic,
 /area/template_noop)
 "cn" = (
 /obj/machinery/power/supermatter_crystal/engine,
@@ -37,17 +37,18 @@
 /turf/open/floor/engine,
 /area/template_noop)
 "dN" = (
-/obj/machinery/atmospherics/components/binary/pump/on{
-	dir = 8;
-	name = "Gas to Cold Loop"
-	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/heat_exchanging/junction{
+	dir = 8
 	},
 /turf/open/floor/engine,
 /area/template_noop)
 "dP" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
+/obj/machinery/atmospherics/components/trinary/filter/flipped/critical{
+	dir = 8
+	},
 /turf/open/floor/engine,
 /area/template_noop)
 "ff" = (
@@ -115,6 +116,9 @@
 	},
 /turf/open/floor/engine,
 /area/template_noop)
+"iK" = (
+/turf/open/floor/engine,
+/area/template_noop)
 "iU" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
@@ -129,7 +133,7 @@
 /turf/open/floor/engine,
 /area/template_noop)
 "lS" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
 /turf/open/floor/engine,
 /area/template_noop)
 "mf" = (
@@ -140,13 +144,10 @@
 	dir = 6
 	},
 /obj/structure/lattice/catwalk,
-/turf/open/floor/engine,
+/turf/open/space/basic,
 /area/template_noop)
 "mE" = (
-/obj/machinery/atmospherics/components/trinary/filter/critical{
-	dir = 4;
-	filter_type = list(/datum/gas/nitrogen)
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /turf/open/floor/engine,
 /area/template_noop)
 "nQ" = (
@@ -164,16 +165,14 @@
 /obj/effect/mapping_helpers/airalarm/tlv_no_checks,
 /turf/open/floor/engine,
 /area/template_noop)
-"oG" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
-/turf/open/floor/engine,
-/area/template_noop)
 "pg" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /turf/open/floor/engine,
 /area/template_noop)
 "pW" = (
 /obj/machinery/shower{
-	dir = 4
+	name = "emergency shower";
+	pixel_y = 7
 	},
 /obj/effect/mapping_helpers/make_non_slip,
 /turf/open/floor/engine,
@@ -199,7 +198,7 @@
 	dir = 10
 	},
 /obj/structure/lattice/catwalk,
-/turf/open/floor/engine,
+/turf/open/space/basic,
 /area/template_noop)
 "si" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
@@ -228,7 +227,7 @@
 	dir = 10
 	},
 /obj/structure/lattice/catwalk,
-/turf/open/floor/engine,
+/turf/open/space/basic,
 /area/template_noop)
 "vs" = (
 /obj/machinery/door/poddoor/shutters/radiation/preopen{
@@ -241,12 +240,9 @@
 /turf/open/floor/plating,
 /area/template_noop)
 "wi" = (
-/obj/machinery/atmospherics/components/binary/pump/on{
-	dir = 4;
-	name = "Cold Loop to Gas"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
+/obj/machinery/atmospherics/components/trinary/filter/flipped/critical{
+	filter_type = list(/datum/gas/nitrogen);
+	dir = 8
 	},
 /turf/open/floor/engine,
 /area/template_noop)
@@ -258,7 +254,7 @@
 	dir = 6
 	},
 /obj/structure/lattice/catwalk,
-/turf/open/floor/engine,
+/turf/open/space/basic,
 /area/template_noop)
 "wA" = (
 /obj/structure/reflector/box/anchored{
@@ -278,7 +274,7 @@
 	dir = 5
 	},
 /obj/structure/lattice/catwalk,
-/turf/open/floor/engine,
+/turf/open/space/basic,
 /area/template_noop)
 "xI" = (
 /obj/structure/cable/yellow{
@@ -299,13 +295,12 @@
 	dir = 5
 	},
 /obj/structure/lattice/catwalk,
-/turf/open/floor/engine,
+/turf/open/space/basic,
 /area/template_noop)
 "Aw" = (
 /obj/machinery/atmospherics/components/binary/pump{
 	name = "Gas to Chamber"
 	},
-/obj/machinery/light/small,
 /turf/open/floor/engine,
 /area/template_noop)
 "CL" = (
@@ -334,6 +329,12 @@
 	},
 /turf/open/floor/engine,
 /area/template_noop)
+"ET" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/engine,
+/area/template_noop)
 "Fa" = (
 /obj/machinery/power/rad_collector/anchored,
 /obj/structure/window/plasma/reinforced{
@@ -357,7 +358,6 @@
 /obj/machinery/atmospherics/components/unary/outlet_injector/on{
 	dir = 8
 	},
-/obj/structure/lattice/catwalk,
 /obj/structure/window/plasma/reinforced{
 	dir = 1
 	},
@@ -368,7 +368,8 @@
 /obj/structure/window/plasma/reinforced{
 	dir = 8
 	},
-/turf/open/floor/engine,
+/obj/structure/lattice/catwalk,
+/turf/open/space/basic,
 /area/template_noop)
 "GD" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
@@ -411,7 +412,7 @@
 	dir = 9
 	},
 /obj/structure/lattice/catwalk,
-/turf/open/floor/engine,
+/turf/open/space/basic,
 /area/template_noop)
 "KJ" = (
 /obj/machinery/atmospherics/components/trinary/filter/flipped/critical{
@@ -493,13 +494,7 @@
 /area/template_noop)
 "Pm" = (
 /obj/machinery/modular_computer/console/preset/engineering{
-	dir = 1
-	},
-/turf/open/floor/engine,
-/area/template_noop)
-"Po" = (
-/obj/structure/cable{
-	icon_state = "4-8"
+	dir = 4
 	},
 /turf/open/floor/engine,
 /area/template_noop)
@@ -512,7 +507,7 @@
 	dir = 9
 	},
 /obj/structure/lattice/catwalk,
-/turf/open/floor/engine,
+/turf/open/space/basic,
 /area/template_noop)
 "Px" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
@@ -524,12 +519,6 @@
 "PR" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
-	},
-/turf/open/floor/engine,
-/area/template_noop)
-"Qa" = (
-/obj/machinery/atmospherics/components/trinary/filter/critical{
-	dir = 4
 	},
 /turf/open/floor/engine,
 /area/template_noop)
@@ -553,7 +542,7 @@
 	dir = 6
 	},
 /obj/structure/lattice/catwalk,
-/turf/open/floor/engine,
+/turf/open/space/basic,
 /area/template_noop)
 "SB" = (
 /obj/effect/spawner/structure/window/plasma/reinforced,
@@ -620,22 +609,22 @@
 /area/template_noop)
 
 (1,1,1) = {"
-pW
 OH
+Pm
 Sh
 ah
 yF
 ws
 ah
 cd
-pg
+iK
 RR
 RR
-pg
+iK
 "}
 (2,1,1) = {"
-pg
-Pm
+pW
+iK
 qK
 xE
 vd
@@ -654,12 +643,12 @@ PR
 dN
 PR
 PR
-wi
+dN
 PR
 CN
 sv
 sv
-pg
+iK
 "}
 (4,1,1) = {"
 UR
@@ -670,16 +659,16 @@ NM
 si
 CL
 cX
-oG
+pg
 Wo
-oG
+pg
 pg
 "}
 (5,1,1) = {"
 LC
-Po
+ET
 KJ
-dP
+lS
 Px
 VZ
 Ww
@@ -687,12 +676,12 @@ Up
 Me
 VZ
 mE
-dP
+wi
 "}
 (6,1,1) = {"
 LC
-Po
-oG
+ET
+pg
 VZ
 VZ
 YA
@@ -700,13 +689,13 @@ Il
 Il
 Il
 VZ
+mE
 lS
-dP
 "}
 (7,1,1) = {"
 UR
-Po
-oG
+ET
+pg
 YA
 nQ
 YA
@@ -714,27 +703,27 @@ TL
 TL
 TL
 VZ
-Qa
+mE
 dP
 "}
 (8,1,1) = {"
 UR
-Po
+ET
 MM
 hJ
-pg
+iK
 ff
 Jq
 cn
-pg
+iK
 SB
-lS
+mE
 Fp
 "}
 (9,1,1) = {"
 xI
-Po
-lS
+ET
+mE
 yb
 Aw
 yb
@@ -742,13 +731,13 @@ iU
 iU
 iU
 VZ
-Qa
+mE
 dP
 "}
 (10,1,1) = {"
 jA
-Po
-lS
+ET
+mE
 VZ
 VZ
 yb
@@ -756,13 +745,13 @@ Fa
 Fa
 Fa
 VZ
+mE
 lS
-dP
 "}
 (11,1,1) = {"
 LJ
 Lh
-lS
+mE
 EN
 Wx
 VZ
@@ -770,7 +759,7 @@ vs
 fi
 gv
 VZ
-Qa
+mE
 dP
 "}
 (12,1,1) = {"
@@ -782,8 +771,8 @@ ap
 Ip
 ap
 hf
-lS
+mE
 GD
-lS
+mE
 Gy
 "}

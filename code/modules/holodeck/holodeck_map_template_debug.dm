@@ -2,8 +2,6 @@
 //            DEBUG Holodeck Maps
 // ---------------------------------------------
 /datum/map_template/holodeck/debug
-
-/datum/map_template/holodeck/debug/empty
 	name = "Debug - Offline"
 	template_id = "debug-offline"
 	mappath = "_maps/holodeck/debug/empty.dmm"
@@ -19,9 +17,14 @@
 	mappath = "_maps/holodeck/debug/test_medicalsim.dmm"
 
 /datum/map_template/holodeck/debug/engi_sm
-	name = "Holodeck - Engineering SM"
-	template_id = "engi-sm-debug"
-	mappath = "_maps/holodeck/debug/engi-sm.dmm"
+	name = "Holodeck - Engineering N2 SM"
+	template_id = "engi-n2-sm-debug"
+	mappath = "_maps/holodeck/debug/engi-n2-sm.dmm"
+
+/datum/map_template/holodeck/debug/engi_sm/co2
+	name = "Holodeck - Engineering CO2 SM"
+	template_id = "engi-co2-sm-debug"
+	mappath = "_maps/holodeck/debug/engi-co2-sm.dmm"
 
 /datum/map_template/holodeck/debug/sci_robotics
 	name = "Holodeck - Science Robotics"

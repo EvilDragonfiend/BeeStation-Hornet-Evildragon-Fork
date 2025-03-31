@@ -440,11 +440,20 @@ GLOBAL_LIST_INIT(typecache_holodeck_linked_floorcheck_ok, typecacheof(list(/turf
 	mapped_start_area = /area/holodeck/debug
 	program_type = /datum/map_template/holodeck/debug
 	offline_program = "debug-offline"
+	program = "debug-offline"
 	req_access = list(ACCESS_CENT_GENERAL)
 
 	idle_power_usage = 0
 	active_power_usage = 0
 
+/obj/machinery/computer/holodeck/debug/process(delta_time=2)
+	if(damaged && DT_PROB(10, delta_time))
+		for(var/turf/holo_turf in linked)
+			if(DT_PROB(5, delta_time))
+				do_sparks(2, 1, holo_turf)
+				return
+	if(!. || program == offline_program)
+		return
 
 #undef HOLODECK_CD
 #undef HOLODECK_DMG_CD
