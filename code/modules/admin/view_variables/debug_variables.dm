@@ -91,18 +91,20 @@
 		#endif
 
 	if(isappearance(value)) // Reminder: Do not replace this into /image/debug_variable_value() proc. /appearance can't do that.
-		return "<a href='byond://?_src_=vars;[HrefToken()];Vars=[REF(value)]'>/appearance ([span_value("[get_appearance_vv_summary_name(value)]")]) [REF(value)]</a>"
+		return "<a href='byond://?_src_=vars;[HrefToken()];Vars=[REF(value)]'>/appearance ([span_value("[GLOB.mirage_type.appearance.show_vv_summary_name(value)]")]) [REF(value)]</a>"
 
 	if(isimage(value))
 		var/image/image = value
-		return "<a href='byond://?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[image.type] ([span_value("[get_appearance_vv_summary_name(image)]")]) [REF(value)]</a>"
+		return "<a href='byond://?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[image.type] ([span_value("[GLOB.mirage_type.appearance.show_vv_summary_name(image)]")]) [REF(value)]</a>"
 
 	// fun fact: there are two types of /filters. `/filters(/filters(), /filters(), ...)`
 	// isfilter() doesn't know if it's a parent filter(that has [/filters]s inside of itself), or a child filter
 	var/isfilter = isfilter(value)
 	var/is_child_filter = isfilter && !isdatum(owner) && !isappearance(owner) // 'child_filter' means each /filters in /atom.filters
 	if(is_child_filter)
-		return "/filters\[child\] ([span_value("[value.type]")])"
+		return "<a href='byond://?_src_=vars;[HrefToken()];Vars=[REF(value)]'>/filters!! ([span_value("[GLOB.mirage_filter.show_vv_summary_name(value)]")]) [REF(value)]</a>"
+		//return "/filters!! [GLOB.mirage_filter.]"
+		//return "/filters\[child\] ([span_value("[value.type]")])"
 
 	if(isfile(value))
 		return span_value("'[value]'")
@@ -153,6 +155,13 @@
 				items += debug_variable(key, val, level + 1, sanitize = sanitize, display_flags = flag)
 
 			return "[a_open][list_type] ([length(list_value)])[a_close]<ul>[items.Join()]</ul>"
+
+	if(isvector(value))
+		return "is vector"
+
+	if(ispixloc(value))
+		return "is pixloc"
+
 
 	if(name in GLOB.bitfields)
 		var/list/flags = list()

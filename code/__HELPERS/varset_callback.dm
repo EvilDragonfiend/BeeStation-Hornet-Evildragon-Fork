@@ -1,6 +1,8 @@
 /// datum may be null, but it does need to be a typed var
 #define NAMEOF(datum, X) (#X || ##datum.##X)
 
+/// NAMEOF macro but without having datum
+#define NAMEOF_SRC(X) (#X || ##src.##X)
 
 /**
  * NAMEOF that actually works in static definitions because src::type requires src to be defined

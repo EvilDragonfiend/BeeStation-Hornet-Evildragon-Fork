@@ -11,6 +11,10 @@
 	datum_flags |= DF_VAR_EDITED
 	return TRUE
 
+/// returns "src.vars". This is made to adjust some datums vv vars output manually
+/datum/proc/vv_get_vars_list()
+	return src.vars
+
 /datum/proc/vv_get_var(var_name)
 	switch(var_name)
 		if ("vars")

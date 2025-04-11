@@ -87,7 +87,7 @@
 		if(STYLE_DATUM)
 			header = thing.vv_get_header()
 		if(STYLE_APPEARANCE)
-			header = vv_get_header_appearance(thing)
+			header = GLOB.mirage_type.appearance.vv_get_header_primitive(thing)
 		if(STYLE_LIST, STYLE_SPECIAL_LIST, STYLE_READ_ONLY_LIST)
 			header = list("<b>/list</b>")
 
@@ -157,7 +157,7 @@
 		if(STYLE_DATUM)
 			dropdown_options = thing.vv_get_dropdown()
 		if(STYLE_APPEARANCE)
-			dropdown_options = vv_get_dropdown_appearance(thing)
+			dropdown_options = GLOB.mirage_type.appearance.vv_get_dropdown_primitive(thing)
 		if(STYLE_READ_ONLY_LIST)
 			dropdown_options = list(
 				"---",
@@ -197,10 +197,9 @@
 	var/list/varname_list = list()
 	switch(debug_output_style)
 		if(STYLE_DATUM)
-			for(var/each_varname in thing.vars)
-				varname_list += each_varname
+			varname_list = thing.vv_get_vars_list()
 		if(STYLE_APPEARANCE)
-			var/static/list/virtual_appearance_vars = build_virtual_appearance_vars()
+			var/static/list/virtual_appearance_vars = GLOB.mirage_type.appearance.vv_get_vars_list()
 			varname_list = virtual_appearance_vars.Copy()
 		// Does nothing to LIST STYLE defines
 
@@ -209,14 +208,15 @@
 	var/list/variable_html = list()
 	switch(debug_output_style)
 		if(STYLE_DATUM)
-			varname_list = sort_list(varname_list)
+			if(length(varname_list) == length(thing.vars)) // if vv_get_vars_list() returns a customized size, skips sorting.
+				varname_list = sort_list(varname_list)
 			for(var/each_varname in varname_list)
 				if(thing.can_vv_get(each_varname))
 					variable_html += thing.vv_get_var(each_varname)
 		if(STYLE_APPEARANCE)
 			varname_list = sort_list(varname_list)
 			for(var/each_varname in varname_list)
-				variable_html += debug_variable_appearance(each_varname, thing)
+				variable_html += GLOB.mirage_type.appearance.vv_get_var_primitive(&thing, each_varname)
 		if(STYLE_LIST, STYLE_SPECIAL_LIST, STYLE_READ_ONLY_LIST)
 			// There is only VV_READ_ONLY for now
 			var/list_flags = (read_only_special_list ? VV_READ_ONLY : null)
