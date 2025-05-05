@@ -5,9 +5,6 @@
 	if(capitalized)
 		. = capitalize(.)
 
-/datum/proc/p_They(temp_gender)
-	return capitalize(p_they(temp_gender))
-
 /datum/proc/p_their(capitalized, temp_gender)
 	. = "its"
 	if(capitalized)

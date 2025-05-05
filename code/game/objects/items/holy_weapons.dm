@@ -149,7 +149,7 @@
 	item_state = "nullrod"
 	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
-	block_upgrade_walk = TRUE
+	block_upgrade_walk = 1
 	force = 18
 	throw_speed = 3
 	throw_range = 4
@@ -291,7 +291,7 @@
 	damtype = BURN
 	attack_verb_continuous = list("punches", "cross counters", "pummels")
 	attack_verb_simple = list("punch", "cross counter", "pummel")
-	block_upgrade_walk = FALSE
+	block_upgrade_walk = 0
 
 /obj/item/nullrod/godhand/Initialize(mapload)
 	. = ..()
@@ -589,7 +589,7 @@
 	tool_behaviour = TOOL_SAW
 	toolspeed = 2 //slower than a real saw
 	attack_weight = 2
-	block_upgrade_walk = FALSE
+	block_upgrade_walk = 0
 
 
 /obj/item/nullrod/chainsaw/Initialize(mapload)

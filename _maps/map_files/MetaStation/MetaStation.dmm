@@ -5621,7 +5621,7 @@
 /turf/open/floor/grass,
 /area/hydroponics/garden)
 "aRh" = (
-/mob/living/basic/cow{
+/mob/living/simple_animal/cow{
 	name = "Betsy";
 	real_name = "Betsy"
 	},

@@ -34,7 +34,7 @@
 	. = ..()
 	if(.)
 		return
-	to_chat(user, span_notice("Picking up the swarmer may cause it to activate. You should be careful about this. You could probably disable it if you had a screwdriver."))
+	to_chat(user, span_notice("Picking up the swarmer may cause it to activate. You should be careful about this."))
 
 /obj/effect/mob_spawn/swarmer/attackby(obj/item/W, mob/living/user, params)
 	if(W.tool_behaviour == TOOL_SCREWDRIVER && !user.combat_mode)
@@ -175,7 +175,7 @@
 	return FALSE //would logically be TRUE, but we don't want AI swarmers eating player spawn chances.
 
 /obj/effect/mob_spawn/swarmer/IntegrateAmount()
-	return 20
+	return 50
 
 /turf/closed/indestructible/swarmer_act()
 	return FALSE

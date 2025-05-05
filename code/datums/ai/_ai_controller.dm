@@ -9,8 +9,6 @@ multiple modular subtrees with behaviors
 	var/atom/pawn
 	///Bitfield of traits for this AI to handle extra behavior
 	var/ai_traits
-	///Current actions planned to be performed by the AI in the upcoming plan
-	var/list/planned_behaviors
 	///Current actions being performed by the AI.
 	var/list/current_behaviors
 	///Current actions and their respective last time ran as an assoc list.
@@ -140,17 +138,12 @@ multiple modular subtrees with behaviors
 		idle_behavior.perform_idle_behavior(delta_time, src) //Do some stupid shit while we have nothing to do
 		return
 
-	if(current_movement_target)
-		if(!isatom(current_movement_target))
-			stack_trace("[pawn]'s current movement target is not an atom, rather a [current_movement_target.type]! Did you accidentally set it to a weakref?")
-			CancelActions()
-			return
+	if(current_movement_target && get_dist(pawn, current_movement_target) > max_target_distance) //The distance is out of range
+		CancelActions()
+		return
 
-		if(get_dist(pawn, current_movement_target) > max_target_distance) //The distance is out of range
-			CancelActions()
-			return
-
-	for(var/datum/ai_behavior/current_behavior as anything in current_behaviors)
+	for(var/i in current_behaviors)
+		var/datum/ai_behavior/current_behavior = i
 
 
 		// Convert the current behaviour action cooldown to realtime seconds from deciseconds.current_behavior
@@ -185,14 +178,6 @@ multiple modular subtrees with behaviors
 			ProcessBehavior(action_delta_time, current_behavior)
 			return
 
-///Determines whether the AI can currently make a new plan
-/datum/ai_controller/proc/able_to_plan()
-	. = TRUE
-	for(var/datum/ai_behavior/current_behavior as anything in current_behaviors)
-		if(!(current_behavior.behavior_flags & AI_BEHAVIOR_CAN_PLAN_DURING_EXECUTION)) //We have a behavior that blocks planning
-			. = FALSE
-			break
-
 ///This is where you decide what actions are taken by the AI.
 /datum/ai_controller/proc/SelectBehaviors(delta_time)
 	SHOULD_NOT_SLEEP(TRUE) //Fuck you don't sleep in procs like this.
@@ -205,15 +190,6 @@ multiple modular subtrees with behaviors
 		for(var/datum/ai_planning_subtree/subtree as anything in planning_subtrees)
 			if(subtree.SelectBehaviors(src, delta_time) == SUBTREE_RETURN_FINISH_PLANNING)
 				break
-
-	for(var/datum/ai_behavior/current_behavior as anything in current_behaviors)
-		if(LAZYACCESS(planned_behaviors, current_behavior))
-			continue
-		var/list/arguments = list(src, FALSE)
-		var/list/stored_arguments = behavior_args[type]
-		if(stored_arguments)
-			arguments += stored_arguments
-		current_behavior.finish_action(arglist(arguments))
 
 ///This proc handles changing ai status, and starts/stops processing if required.
 /datum/ai_controller/proc/set_ai_status(new_ai_status)
@@ -243,7 +219,6 @@ multiple modular subtrees with behaviors
 	if(!behavior.setup(arglist(arguments)))
 		return
 	LAZYADD(current_behaviors, behavior)
-	LAZYADDASSOC(planned_behaviors, behavior, TRUE)
 	arguments.Cut(1, 2)
 	if(length(arguments))
 		behavior_args[behavior_type] = arguments
