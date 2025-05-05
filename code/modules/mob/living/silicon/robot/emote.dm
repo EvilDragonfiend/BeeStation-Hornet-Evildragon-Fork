@@ -51,8 +51,8 @@
 	message = "plays a sad trombone..."
 	sound = 'sound/misc/sadtrombone.ogg'
 
-/datum/emote/silicon/alarm
-	key = "alarm"
+/datum/emote/silicon/warn
+	key = "warn"
 	message = "blares an alarm!"
 	sound = 'sound/machines/warning-buzzer.ogg'
 

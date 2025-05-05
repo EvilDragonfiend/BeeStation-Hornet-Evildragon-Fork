@@ -9,6 +9,10 @@
 	if(!istype(B) || (!(B.container && istype(B.container, /obj/item/mmi))))
 		return FALSE
 
+/datum/emote/brain/alarm
+	key = "alarm"
+	message = "sounds an alarm."
+
 /datum/emote/brain/alert
 	key = "alert"
 	message = "lets out a distressed noise."
@@ -21,3 +25,8 @@
 /datum/emote/brain/notice
 	key = "notice"
 	message = "plays a loud tone."
+
+/datum/emote/brain/whistle
+	key = "whistle"
+	key_third_person = "whistles"
+	message = "whistles."

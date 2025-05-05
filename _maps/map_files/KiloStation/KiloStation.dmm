@@ -6334,7 +6334,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/mob/living/basic/cow{
+/mob/living/simple_animal/cow{
 	desc = "Allegedly a bull.";
 	name = "Otis";
 	real_name = "Betsy"
@@ -19057,6 +19057,7 @@
 /turf/open/floor/iron/showroomfloor,
 /area/medical/surgery)
 "ekM" = (
+/obj/machinery/door/firedoor,
 /obj/effect/decal/cleanable/blood/old,
 /obj/machinery/door/airlock/external{
 	name = "Mining Dock Airlock";
