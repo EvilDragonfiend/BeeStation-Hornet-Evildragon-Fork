@@ -454,7 +454,7 @@ SUBSYSTEM_DEF(zcopy)
 // For each of overlay,underlay, call fixup_appearance_planes; if it returns a new appearance, replace self
 
 /// Generate a new appearance from `appearance` with planes mangled to work with Z-Mimic. Do not pass a depth.
-/datum/controller/subsystem/zcopy/proc/fixup_appearance_planes(appearance, depth = 0)
+/datum/controller/subsystem/zcopy/proc/fixup_appearance_planes(image/appearance, depth = 0)
 
 	// Adding this to guard against a reported runtime - supposed to be impossible, so cause is unclear.
 	if(!appearance)

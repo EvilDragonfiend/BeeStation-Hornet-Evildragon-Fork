@@ -20,6 +20,15 @@ GLOBAL_VAR_INIT(magic_appearance_detecting_image, new /image) // appearances are
 GLOBAL_VAR_INIT(refid_filter, TYPEID(filter(type="angular_blur")))
 #define isfilter(thing) (!islist(thing) && hascall(thing, "Cut") && TYPEID(thing) == GLOB.refid_filter)
 
+GLOBAL_VAR(refid_pixloc)
+#define ispixloc(thing) (TYPEID(thing) == GLOB.refid_pixloc)
+
+GLOBAL_VAR(refid_vector)
+#define isvector(thing) (TYPEID(thing) == GLOB.refid_vector)
+
+GLOBAL_VAR(refid_callee)
+#define iscallee(thing) (TYPEID(thing) == GLOB.refid_callee)
+
 GLOBAL_DATUM_INIT(regex_rgb_text, /regex, regex(@"^#?(([0-9a-fA-F]{8})|([0-9a-fA-F]{6})|([0-9a-fA-F]{3}))$"))
 #define iscolortext(thing) (istext(thing) && GLOB.regex_rgb_text.Find(thing))
 
