@@ -350,7 +350,8 @@ GLOBAL_VAR(survivor_report) //! Contains shared survivor report for roundend rep
 
 	if(GLOB.round_id)
 		var/statspage = CONFIG_GET(string/roundstatsurl)
-		var/info = statspage ? "<a href='byond://?action=openLink&link=[rustg_url_encode(statspage)][GLOB.round_id]'>[GLOB.round_id]</a>" : GLOB.round_id
+		var/roundurl = "[rustg_url_encode(statspage)][GLOB.round_id]"
+		var/info = statspage ? "<a href='byond://?[HREF_TYPE(openLink)][HREF_PARAM(openLink::link, roundurl)]'>[GLOB.round_id]</a>" : GLOB.round_id
 		parts += "[GLOB.TAB]Round ID: <b>[info]</b>"
 	parts += "[GLOB.TAB]Shift Duration: <B>[DisplayTimeText(world.time - SSticker.round_start_time)]</B>"
 	parts += "[GLOB.TAB]Station Integrity: <B>[GLOB.station_was_nuked ? span_redtext("Destroyed") : "[popcount["station_integrity"]]%"]</B>"
