@@ -43,6 +43,7 @@ $title-background-color: transparent !default;
   display: inline-block;
   right: 0.5em;
   margin-top: base.em(-1px);
+  color: $title-text-color;
 }
 
 .Section__rest {
@@ -123,6 +124,9 @@ $title-background-color: transparent !default;
 }
 
 .section-background-dark {
-  background-color: functions.fake-alpha(rgba(0, 0, 0, 0.2), base.$color-bg) !important;
+  background-color: functions.fake-alpha(
+    rgba(0, 0, 0, 0.2),
+    base.$color-bg
+  ) !important;
   background-color: $background-color !important;
 }

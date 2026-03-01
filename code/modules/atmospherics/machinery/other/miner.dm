@@ -13,14 +13,13 @@
 	icon_state = "miner"
 	density = FALSE
 	resistance_flags = INDESTRUCTIBLE|ACID_PROOF|FIRE_PROOF
-	interacts_with_air = TRUE
 	var/spawn_id = null
 	var/spawn_temp = T20C
 	/// Moles of gas to spawn per second
 	var/spawn_mol = MOLES_CELLSTANDARD * 5
 	var/max_ext_mol = INFINITY
 	var/max_ext_kpa = 6500
-	var/overlay_color = "#FFFFFF"
+	var/overlay_color = COLOR_WHITE
 	var/active = TRUE
 	var/power_draw = 0
 	var/power_draw_static = 2000
@@ -161,7 +160,7 @@
 
 /obj/machinery/atmospherics/miner/plasma
 	name = "\improper Plasma Gas Miner"
-	overlay_color = "#FF0000"
+	overlay_color = COLOR_RED
 	spawn_id = /datum/gas/plasma
 
 /obj/machinery/atmospherics/miner/carbon_dioxide
@@ -221,7 +220,7 @@
 
 /obj/machinery/atmospherics/miner/station/plasma
 	name = "\improper Plasma Gas Miner"
-	overlay_color = "#FF0000"
+	overlay_color = COLOR_RED
 	spawn_id = /datum/gas/plasma
 
 /obj/machinery/atmospherics/miner/station/carbon_dioxide

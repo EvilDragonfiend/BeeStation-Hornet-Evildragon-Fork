@@ -47,6 +47,9 @@
 			"products" = list(
 				/obj/item/reagent_containers/condiment/enzyme = 2,
 				/obj/item/reagent_containers/condiment/cherryjelly = 2,
+				/obj/item/reagent_containers/condiment/bbqsauce = 2,
+				/obj/item/reagent_containers/condiment/soysauce = 2,
+				/obj/item/reagent_containers/condiment/mayonnaise = 2,
 				/obj/item/reagent_containers/condiment/honey = 2,
 				/obj/item/reagent_containers/cup/bottle/caramel = 2,
 				/obj/item/reagent_containers/condiment/vanilla = 2,
@@ -68,9 +71,8 @@
 		/obj/item/storage/box/ingredients = 3
 	)
 	refill_canister = /obj/item/vending_refill/dinnerware
-	default_price = 20
+	default_price = PAYCHECK_ASSISTANT * 1.2
 	extra_price = 200
-	dept_req_for_free = NO_FREEBIES
 	seller_department = ACCOUNT_SRV_BITFLAG
 	light_mask = "dinnerware-light-mask"
 

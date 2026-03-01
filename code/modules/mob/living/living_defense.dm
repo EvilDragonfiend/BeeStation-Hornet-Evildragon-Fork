@@ -32,7 +32,7 @@
 			to_chat(src, span_warning("Your armor softens the blow!"))
 	return armor
 
-/// Get the armour value for a specific damage type, targetting a particular zone.
+/// Get the armour value for a specific damage type, targeting a particular zone.
 /// def_zone: The body zone to get the armour for. Null indicates no body zone and will calculate an average armour value instead.
 /// type: The damage type to test for. Must not be null.
 /// penetration: The amount of penetration to add. A value of 20 will reduce the effectiveness of each individual armour piece by 80%.
@@ -134,7 +134,7 @@
 			var/mob/thrown_by = I.thrownby?.resolve()
 			if(thrown_by)
 				log_combat(thrown_by, src, "threw and hit", I, important = I.force)
-			if(!incapacitated(IGNORE_GRAB)) // physics says it's significantly harder to push someone by constantly chucking random furniture at them if they are down on the floor.
+			if(!INCAPACITATED_IGNORING(src, INCAPABLE_GRAB)) // physics says it's significantly harder to push someone by constantly chucking random furniture at them if they are down on the floor.
 				hitpush = FALSE
 		else
 			return 1
@@ -143,8 +143,9 @@
 	..(AM, skipcatch, hitpush, blocked, throwingdatum)
 
 /mob/living/fire_act()
+	. = ..()
 	adjust_fire_stacks(3)
-	IgniteMob()
+	ignite_mob()
 
 /**
  * Called when this mob is grabbed by another mob.
@@ -165,6 +166,7 @@
 		to_chat(user, span_notice("You don't want to risk hurting [src]!"))
 		return FALSE
 	grippedby(user)
+	update_incapacitated()
 
 //proc to upgrade a simple pull into a more aggressive grab.
 /mob/living/proc/grippedby(mob/living/user, instant = FALSE)
@@ -247,26 +249,6 @@
 						span_userdanger("\The [M.name] glomps you!"), span_hear("You hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, M)
 		to_chat(M, span_danger("You glomp [src]!"))
 		return TRUE
-
-/mob/living/attack_basic_mob(mob/living/basic/user)
-	if(user.melee_damage == 0)
-		if(user != src)
-			visible_message(span_notice("\The [user] [user.friendly_verb_continuous] [src]!"), \
-							span_notice("\The [user] [user.friendly_verb_continuous] you!"), null, COMBAT_MESSAGE_RANGE, user)
-			to_chat(user, span_notice("You [user.friendly_verb_simple] [src]!"))
-		return FALSE
-	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning("You don't want to hurt anyone!"))
-		return FALSE
-
-	if(user.attack_sound)
-		playsound(loc, user.attack_sound, 50, TRUE, TRUE)
-	user.do_attack_animation(src)
-	visible_message(span_danger("\The [user] [user.attack_verb_continuous] [src]!"), \
-					span_userdanger("\The [user] [user.attack_verb_continuous] you!"), null, COMBAT_MESSAGE_RANGE, user)
-	to_chat(user, span_danger("You [user.attack_verb_simple] [src]!"))
-	log_combat(user, src, "attacked")
-	return TRUE
 
 /mob/living/attack_animal(mob/living/simple_animal/M)
 	M.face_atom(src)
@@ -388,11 +370,12 @@
 		adjustFireLoss(shock_damage)
 	else
 		adjustStaminaLoss(shock_damage)
-	visible_message(
-		span_danger("[src] was shocked by \the [source]!"), \
-		span_userdanger("You feel a powerful shock coursing through your body!"), \
-		span_hear("You hear a heavy electrical crack.") \
-	)
+	if(!(flags & SHOCK_SUPPRESS_MESSAGE))
+		visible_message(
+			span_danger("[src] was shocked by \the [source]!"), \
+			span_userdanger("You feel a powerful shock coursing through your body!"), \
+			span_hear("You hear a heavy electrical crack.") \
+		)
 	return shock_damage
 
 /mob/living/emp_act(severity)
@@ -417,13 +400,13 @@
 	return 20 //20 points goes to our lucky winner Mr. Singulo!~
 
 /mob/living/narsie_act()
-	if(status_flags & GODMODE || QDELETED(src))
+	if(HAS_TRAIT(src, TRAIT_GODMODE) || QDELETED(src))
 		return
-	if(GLOB.cult_narsie && GLOB.cult_narsie.souls_needed[src])
-		GLOB.cult_narsie.souls_needed -= src
-		GLOB.cult_narsie.souls += 1
-		if((GLOB.cult_narsie.souls == GLOB.cult_narsie.soul_goal) && (GLOB.cult_narsie.resolved == FALSE))
-			GLOB.cult_narsie.resolved = TRUE
+	if(GLOB.narsie && GLOB.narsie.souls_needed[src])
+		GLOB.narsie.souls_needed -= src
+		GLOB.narsie.souls += 1
+		if((GLOB.narsie.souls == GLOB.narsie.soul_goal) && (GLOB.narsie.resolved == FALSE))
+			GLOB.narsie.resolved = TRUE
 			sound_to_playing_players('sound/machines/alarm.ogg')
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cult_ending_helper), 1), 120)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ending_helper)), 270)
@@ -469,20 +452,6 @@
 	if(!used_item)
 		used_item = get_active_held_item()
 	..()
-
-/mob/living/extrapolator_act(mob/living/user, obj/item/extrapolator/extrapolator, dry_run = FALSE)
-	. = ..()
-	EXTRAPOLATOR_ACT_ADD_DISEASES(., diseases)
-
-/mob/living/proc/sethellbound()
-	if(mind)
-		mind.hellbound = TRUE
-		med_hud_set_status()
-		return TRUE
-	return FALSE
-
-/mob/living/proc/ishellbound()
-	return mind?.hellbound
 
 /mob/living/proc/force_hit_projectile(obj/projectile/projectile)
 	return FALSE

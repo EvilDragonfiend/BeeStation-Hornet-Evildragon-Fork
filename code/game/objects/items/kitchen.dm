@@ -57,25 +57,12 @@
 		icon_state = "fork"
 		forkload = null
 
-	else if(user.is_zone_selected(BODY_ZONE_PRECISE_EYES, simplified_probability = 30))
+	else if(user.is_zone_selected(BODY_ZONE_PRECISE_EYES, precise_only = TRUE) && user.is_zone_selected(BODY_GROUP_CHEST_HEAD))
 		if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
 			M = user
-		return eyestab(M,user)
-	else
-		return ..()
-
-/obj/item/knife/poison/attack(mob/living/M, mob/user)
-	if (!istype(M))
-		return
-	. = ..()
-	if (!reagents.total_volume || !M.reagents)
-		return
-	var/amount_inject = amount_per_transfer_from_this
-	if(!M.can_inject(user, user.get_combat_bodyzone(), INJECT_CHECK_PENETRATE_THICK))
-		amount_inject = 1
-	var/amount = min(amount_inject/reagents.total_volume,1)
-	reagents.expose(M,INJECT,amount)
-	reagents.trans_to(M,amount_inject)
+		if (eyestab(M, user, src, silent = user.is_zone_selected(BODY_GROUP_CHEST_HEAD)))
+			return TRUE
+	return ..()
 
 /obj/item/knife/kitchen
 	name = "kitchen knife"

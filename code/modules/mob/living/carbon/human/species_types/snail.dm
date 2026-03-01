@@ -24,15 +24,15 @@
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/snail,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/snail,
-		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/snail,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/snail,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/snail,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/snail
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/snail,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/snail,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/snail,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/snail
 	)
 
 /datum/species/snail/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, delta_time, times_fired)
 	if(istype(chem,/datum/reagent/consumable/sodiumchloride))
-		H.adjustFireLoss(2 * REAGENTS_EFFECT_MULTIPLIER * delta_time)
+		H.adjustFireLoss(2 * REM * delta_time)
 		playsound(H, 'sound/weapons/sear.ogg', 30, 1)
 		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM * delta_time)
 		return TRUE
@@ -60,7 +60,7 @@
 	name = "snail shell"
 	desc = "Worn by snails as armor and storage compartment."
 	icon_state = "snailshell"
-	item_state = "snailshell"
+	inhand_icon_state = "snailshell"
 	lefthand_file = 'icons/mob/inhands/equipment/backpack_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/backpack_righthand.dmi'
 	armor_type = /datum/armor/backpack_snail

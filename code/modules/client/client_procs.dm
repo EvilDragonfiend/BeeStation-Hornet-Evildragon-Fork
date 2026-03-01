@@ -161,8 +161,30 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 				to_chat(src, span_danger("Your href seems to be broken. Please report this to a coder or an admin. (Href data: [json_encode(href_list)])"))
 		return
 
+<<<<<<< HEAD
 	//-------------------------
 	// #7. Old href command system -- should be refactored
+=======
+	// Mentor PM
+	if(href_list["mentor_msg"])
+		cmd_mentor_pm(href_list["mentor_msg"], null)
+		return TRUE
+
+	// LOOC commendation
+
+
+	if(href_list["commandbar_typing"])
+		handle_commandbar_typing(href_list)
+
+	if(href_list["seeker_port"])
+		winshow(src, "login", FALSE) // make sure this thing is hidden
+		var/port_num = text2num(href_list["seeker_port"])
+		if(isnum_safe(port_num))
+			seeker_port = port_num
+		if(!logged_in) // the login handler is ready now
+			src?.send_saved_session_token()
+
+>>>>>>> master
 	switch(href_list["_src_"])
 		if("holder")
 			hsrc = holder
@@ -241,7 +263,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 /client/proc/generate_uuid_string()
 	var/fiftyfifty = prob(50) ? FEMALE : MALE
-	var/hashtext = "[ckey][rand(0,9999)][world.realtime][rand(0,9999)][random_unique_name(fiftyfifty)][rand(0,9999)][address][rand(0,9999)][computer_id][rand(0,9999)][GLOB.round_id]"
+	var/hashtext = "[ckey][rand(0,9999)][world.realtime][rand(0,9999)][generate_random_name(fiftyfifty)][rand(0,9999)][address][rand(0,9999)][computer_id][rand(0,9999)][GLOB.round_id]"
 	return "[rustg_hash_string(RUSTG_HASH_SHA256, hashtext)]"
 
 /client/proc/generate_uuid()

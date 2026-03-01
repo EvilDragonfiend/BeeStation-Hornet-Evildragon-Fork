@@ -59,6 +59,12 @@
 //Same with VV_DROPDOWN_OPTION, but global proc doesn't have src
 #define VV_DROPDOWN_OPTION_APPEARANCE(thing, href_key, name) . += "<option value='byond://?"+HREF_TYPE(var_edit)+HREF_PARAM(var_edit::target, REF(thing))+"[href_key]=TRUE';[HrefToken()]>[name]</option>"
 
+<<<<<<< HEAD
+=======
+// VV HREF KEYS
+#define VV_HK_TARGET "target"
+#define VV_HK_VARNAME "targetvar"		//name or index of var for 1 variable targeting hrefs.
+>>>>>>> master
 
 // vv_do_list() keys
 #define VV_HK_LIST_ADD "listadd"
@@ -97,7 +103,7 @@
 #define VV_HK_TRIGGER_EMP "empulse"
 #define VV_HK_TRIGGER_EXPLOSION "explode"
 #define VV_HK_AUTO_RENAME "auto_rename"
-#define VV_HK_RADIATE "radiate"
+#define VV_HK_IRRADIATE "irradiate"
 #define VV_HK_EDIT_FILTERS "edit_filters"
 #define VV_HK_EDIT_COLOR_MATRIX "edit_color_matrix"
 #define VV_HK_EDIT_PARTICLES "edit_particles"
@@ -124,7 +130,7 @@
 #define VV_HK_ADD_IMPLANT_TOOL	"add_implant_tool"
 #define VV_HK_DEL_IMPLANT_TOOL	"del_implant_tool"
 
-// /obj/machinery/vendor/exploration
+// /obj/machinery/gear_requisition/exploration
 #define VV_ID_GIVE_EXPLO_POINT "id_give_explo_points"
 
 // /obj/machinery/computer/rdconsole
@@ -145,12 +151,16 @@
 #define VV_HK_DIRECT_CONTROL "direct_control"
 #define VV_HK_GIVE_DIRECT_CONTROL "give_direct_control"
 #define VV_HK_OFFER_GHOSTS "offer_ghosts"
+#define VV_HK_GIVE_HALLUCINATION "give_hallucination"
+#define VV_HK_GIVE_DELUSION_HALLUCINATION "give_hallucination_delusion"
+
+// /mob/living
+#define VV_HK_GIVE_SPEECH_IMPEDIMENT "impede_speech"
 
 // /mob/living/carbon
 #define VV_HK_MAKE_AI "aiify"
 #define VV_HK_MODIFY_BODYPART "mod_bodypart"
 #define VV_HK_MODIFY_ORGANS "organs_modify"
-#define VV_HK_HALLUCINATION "force_hallucinate"
 #define VV_HK_MARTIAL_ART "give_martial_art"
 #define VV_HK_GIVE_TRAUMA "give_trauma"
 #define VV_HK_CURE_TRAUMA "cure_trauma"
