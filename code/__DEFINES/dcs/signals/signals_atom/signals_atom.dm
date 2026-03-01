@@ -5,28 +5,36 @@
 // /atom signals
 ///from base of atom/proc/Initialize(mapload): sent any time a new atom is created
 #define COMSIG_ATOM_CREATED "atom_created"
+DEFINE_SIGNAL_ARGUMENT(COMSIG_ATOM_CREATED, mapload)
 ///from base of atom/examine(): (/mob, list/examine_text)
 #define COMSIG_ATOM_EXAMINE "atom_examine"
+DEFINE_SIGNAL_ARGUMENT(COMSIG_ATOM_EXAMINE, mob/mob, list/examine_text)
 ///from base of atom/examine_tags(): (/mob, list/examine_tags)
 #define COMSIG_ATOM_EXAMINE_TAGS "atom_examine_tags"
+DEFINE_SIGNAL_ARGUMENT(COMSIG_ATOM_EXAMINE_TAGS, mob/mob, list/examine_tags)
 ///from base of atom/get_examine_name(): (/mob, list/overrides)
 #define COMSIG_ATOM_GET_EXAMINE_NAME "atom_examine_name"
+DEFINE_SIGNAL_ARGUMENT(COMSIG_ATOM_GET_EXAMINE_NAME, mob/mob, list/overrides)
 	//Positions for overrides list
 	#define EXAMINE_POSITION_ARTICLE (1<<0)
 	#define EXAMINE_POSITION_BEFORE (1<<1)
 ///from base of atom/examine(): (/mob, list/examine_text, can_see_inside)
 #define COMSIG_PARENT_REAGENT_EXAMINE "atom_reagent_examine"
+DEFINE_SIGNAL_ARGUMENT(COMSIG_PARENT_REAGENT_EXAMINE, mob/mob, list/examine_text, can_see_inside)
 	/// Stop the generic reagent examine text
 	#define STOP_GENERIC_REAGENT_EXAMINE (1<<0)
 ///from base of atom/examine_more(): (/mob, examine_list)
 #define COMSIG_ATOM_EXAMINE_MORE "atom_examine_more"
+DEFINE_SIGNAL_ARGUMENT(COMSIG_ATOM_EXAMINE_MORE, mob/mob, list/examine_list)
 /// from atom/examine_more(): (/atom/examining, examine_list)
 #define COMSIG_MOB_EXAMINING_MORE "mob_examining_more"
+DEFINE_SIGNAL_ARGUMENT(COMSIG_MOB_EXAMINING_MORE, atom/examining, list/examine_list)
 //End positions
 #define COMPONENT_EXNAME_CHANGED (1<<0)
 
 ///	from base of [/atom/proc/update_appearance]: (updates)
 #define COMSIG_ATOM_UPDATE_APPEARANCE "atom_update_appearance"
+DEFINE_SIGNAL_ARGUMENT(COMSIG_ATOM_UPDATE_APPEARANCE, update_bitflags)
 	/// If returned from [COMSIG_ATOM_UPDATE_APPEARANCE] it prevents the atom from updating its name.
 	#define COMSIG_ATOM_NO_UPDATE_NAME UPDATE_NAME
 	/// If returned from [COMSIG_ATOM_UPDATE_APPEARANCE] it prevents the atom from updating its desc.
@@ -35,10 +43,13 @@
 	#define COMSIG_ATOM_NO_UPDATE_ICON UPDATE_ICON
 ///	from base of [/atom/proc/update_name]: (updates)
 #define COMSIG_ATOM_UPDATE_NAME "atom_update_name"
+DEFINE_SIGNAL_ARGUMENT(COMSIG_ATOM_UPDATE_NAME, update_bitflags)
 ///	from base of [/atom/proc/update_desc]: (updates)
 #define COMSIG_ATOM_UPDATE_DESC "atom_update_desc"
+DEFINE_SIGNAL_ARGUMENT(COMSIG_ATOM_UPDATE_DESC, update_bitflags)
 ///from base of [/atom/update_icon]: ()
 #define COMSIG_ATOM_UPDATE_ICON "atom_update_icon"
+DEFINE_SIGNAL_ARGUMENT(COMSIG_ATOM_UPDATE_ICON, update_bitflags)
 	/// If returned from [COMSIG_ATOM_UPDATE_ICON] it prevents the atom from updating its icon state.
 	#define COMSIG_ATOM_NO_UPDATE_ICON_STATE UPDATE_ICON_STATE
 	/// If returned from [COMSIG_ATOM_UPDATE_ICON] it prevents the atom from updating its overlays.
@@ -46,10 +57,13 @@
 	#define COMSIG_ATOM_NO_UPDATE_GREYSCALE UPDATE_GREAYSCALE
 ///from base of [atom/update_inhand_icon]: (/mob)
 #define COMSIG_ATOM_UPDATE_INHAND_ICON "atom_update_inhand_icon"
+DEFINE_SIGNAL_ARGUMENT(COMSIG_ATOM_UPDATE_INHAND_ICON, mob/mob)
 ///from base of [atom/update_icon_state]: ()
 #define COMSIG_ATOM_UPDATE_ICON_STATE "atom_update_icon_state"
+DEFINE_SIGNAL_ARGUMENT(COMSIG_ATOM_UPDATE_ICON_STATE)
 //from base of atom/update_overlays(): (list/new_overlays)
 #define COMSIG_ATOM_UPDATE_OVERLAYS "atom_update_overlays"
+DEFINE_SIGNAL_ARGUMENT(COMSIG_ATOM_UPDATE_OVERLAYS, list/new_overlays)
 ///from base of [/atom/update_icon]: (signalOut, did_anything)
 #define COMSIG_ATOM_UPDATED_ICON "atom_updated_icon"
 ///from base of [/atom/proc/smooth_icon]: ()
@@ -76,6 +90,7 @@
 	#define COMSIG_ATOM_BULLET_ACT_FORCE_PIERCE	(1 << 2)
 ///from base of atom/CheckParts(): (list/parts_list, datum/crafting_recipe/R)
 #define COMSIG_ATOM_CHECKPARTS "atom_checkparts"
+DEFINE_SIGNAL_ARGUMENT(COMSIG_ATOM_CHECKPARTS, list/parts_list, datum/crafting_recipe/recipe)
 ///from base of atom/CheckParts(): (atom/movable/new_craft) - The atom has just been used in a crafting recipe and has been moved inside new_craft.
 #define COMSIG_ATOM_USED_IN_CRAFT "atom_used_in_craft"
 ///! from base of atom/blob_act(): (/obj/structure/blob)
