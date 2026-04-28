@@ -9,6 +9,7 @@ CREATION_TEST_IGNORE_SELF(/mob)
   * Has a lot of the creature game world logic, such as health etc
   */
 /mob
+	abstract_type = /mob
 	density = TRUE
 	layer = MOB_LAYER
 	animate_movement = SLIDE_STEPS
@@ -93,6 +94,8 @@ CREATION_TEST_IGNORE_SELF(/mob)
 	  */
 	var/notransform = null	//Carbon
 
+	/// used for /client/eye variable. Saving which eye this mob is supposed to use when a client is attached to this mob.
+	var/atom/current_mob_eye
 	/// Is the mob blind
 	var/eye_blind = 0		//Carbon
 	/// What is the mobs real name (name is overridden for disguises etc)
@@ -181,13 +184,6 @@ CREATION_TEST_IGNORE_SELF(/mob)
 
 	///Calls relay_move() to whatever this is set to when the mob tries to move
 	var/atom/movable/remote_control
-
-	/**
-	  * The sound made on death
-	  *
-	  * leave null for no sound. used for *deathgasp
-	  */
-	var/deathsound
 
 	///the current turf being examined in the stat panel
 	var/turf/listed_turf = null

@@ -17,6 +17,8 @@
 
 	// This needs to be called very very early in human init (before organs / species are created at the minimum)
 	setup_organless_effects()
+	// Physiology needs to be created before species, as some species modify physiology
+	setup_physiology()
 
 	setup_human_dna()
 
@@ -28,7 +30,6 @@
 
 	//initialise organs
 	create_internal_organs() //most of it is done in set_species now, this is only for parent call
-	physiology = new()
 
 	. = ..()
 
@@ -47,6 +48,9 @@
 		AddComponent(/datum/component/mood)
 
 	GLOB.human_list += src
+
+/mob/living/carbon/human/proc/setup_physiology()
+	physiology = new()
 
 /// This proc is for holding effects applied when a mob is missing certain organs
 /// It is called very, very early in human init because all humans innately spawn with no organs and gain them during init
@@ -107,12 +111,6 @@
 	if(istype(C))
 		INVOKE_ASYNC(C, TYPE_PROC_REF(/obj/vehicle/sealed/car, RunOver), src)
 	spreadFire(AM)
-
-/mob/living/carbon/human/reset_perspective(atom/new_eye, force_reset = FALSE)
-	if(dna?.species?.prevent_perspective_change && !force_reset) // This is in case a species needs to prevent perspective changes in certain cases
-		update_fullscreen()
-		return
-	return ..()
 
 /mob/living/carbon/human/Topic(href, href_list)
 	if(href_list["see_id"])

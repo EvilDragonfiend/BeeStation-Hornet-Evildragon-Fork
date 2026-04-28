@@ -1,4 +1,5 @@
 /obj/item/clothing/suit/armor
+	abstract_type = /obj/item/clothing/suit/armor
 	icon = 'icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 	allowed = null
@@ -179,6 +180,13 @@
 	armor_type = /datum/armor/capcarapace_jacket
 	clothing_flags = NONE
 
+/obj/item/clothing/suit/armor/vest/hop
+	name = "head of personnel's coat"
+	desc = "A big coat for the Head of Personnel who wants to make a fashion statement. Has armour woven within the fabric."
+	icon_state = "hopcoat"
+	inhand_icon_state = "b_suit"
+	body_parts_covered = CHEST|GROIN|ARMS
+	dog_fashion = null
 
 /datum/armor/capcarapace_jacket
 	melee = 40
@@ -223,10 +231,16 @@
 	inhand_icon_state = "bonearmor"
 	blood_overlay_type = "armor"
 	armor_type = /datum/armor/armor_bone
-	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS
+	body_parts_covered = CHEST | GROIN | LEGS | FEET | ARMS
 	slowdown = 0.1
 	clothing_flags = THICKMATERIAL
-
+	allowed = list(
+		/obj/item/spear/bonespear,
+		/obj/item/claymore/bone,
+		/obj/item/fireaxe/boneaxe,
+		/obj/item/knife/combat/bone,
+		/obj/item/gun/ballistic/bow/ashen,
+	)
 
 /datum/armor/armor_bone
 	melee = 35
@@ -478,7 +492,6 @@
 	inhand_icon_state = "centcom"
 	body_parts_covered = CHEST|GROIN|ARMS
 	armor_type = /datum/armor/armor_centcom_formal
-
 
 /datum/armor/armor_centcom_formal
 	melee = 35

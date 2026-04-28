@@ -65,7 +65,7 @@
 	return TRUE
 
 /mob/living/silicon/pai/proc/fold_in(force = FALSE)
-	emittersemicd = TRUE
+	holochassis_ready = FALSE
 	if(!force)
 		addtimer(VARSET_CALLBACK(src, holochassis_ready, TRUE), HOLOCHASSIS_COOLDOWN)
 	else
@@ -79,9 +79,7 @@
 	if(ispickedupmob(loc))
 		var/obj/item/mob_holder/MH = loc
 		MH.release()
-	if(client)
-		client.perspective = EYE_PERSPECTIVE
-		client.set_eye(card)
+	set_mob_eye_to(card)
 	var/turf/T = drop_location()
 	card.forceMove(T)
 	forceMove(card)
@@ -104,18 +102,19 @@
 		balloon_alert(src, "emitter repair incomplete")
 		return FALSE
 
-	if(!canholo && !force)
+	if(!can_holo && !force)
 		balloon_alert(src, "emitters are disabled")
 		return FALSE
 
 	if(holoform)
 		. = fold_in(force)
 		return
-	if(emittersemicd)
+
+	if(!holochassis_ready)
 		balloon_alert(src, "emitters recycling...")
 		return FALSE
 
-	emittersemicd = TRUE
+	holochassis_ready = FALSE
 	addtimer(VARSET_CALLBACK(src, holochassis_ready, TRUE), HOLOCHASSIS_COOLDOWN)
 	REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, PAI_FOLDED)
 	REMOVE_TRAIT(src, TRAIT_HANDS_BLOCKED, PAI_FOLDED)
@@ -125,14 +124,12 @@
 		if(!L.temporarilyRemoveItemFromInventory(card))
 			to_chat(src, span_warning("Error: Unable to expand to mobile form. Chassis is restrained by some device or person."))
 			return FALSE
-	if(istype(card.loc, /obj/structure) || istype(card.loc, /obj/machinery))
+	if(isstructure(card.loc) || ismachinery(card.loc))
 		to_chat(src, span_warning("Error: Unable to expand to mobile form. Chassis is restrained by some device or person."))
 		return FALSE
 	forceMove(get_turf(card))
 	card.forceMove(src)
-	if(client)
-		client.perspective = EYE_PERSPECTIVE
-		client.set_eye(src)
+	set_mob_eye_to(MOB_EYE_SELF)
 	set_light_on(FALSE)
 	update_appearance(UPDATE_ICON_STATE)
 	visible_message(span_boldnotice("[src] appears in a flash of light!"))

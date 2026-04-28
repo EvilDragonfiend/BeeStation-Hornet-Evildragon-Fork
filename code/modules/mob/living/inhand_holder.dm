@@ -101,7 +101,7 @@ CREATION_TEST_IGNORE_SUBTYPES(/obj/item/mob_holder)
 			to_chat(captor, span_warning("[released_mob] wriggles free!"))
 		captor.dropItemToGround(src)
 	released_mob.forceMove(drop_location())
-	released_mob.reset_perspective()
+	released_mob.set_mob_eye_to(MOB_EYE_SELF)
 	released_mob.setDir(SOUTH)
 	if(display_messages)
 		released_mob.visible_message(span_warning("[released_mob] uncurls!"))
@@ -154,15 +154,4 @@ CREATION_TEST_IGNORE_SUBTYPES(/obj/item/mob_holder)
 	var/mob/living/simple_animal/rabbit/rabbit = new(src)
 	return ..(mapload, rabbit, rabbit.held_state, rabbit.head_icon, rabbit.held_lh, rabbit.held_rh, rabbit.worn_slot_flags)
 
-/obj/item/mob_holder/destructible
-
-/obj/item/mob_holder/destructible/Destroy()
-	if(held_mob)
-		release(display_messages = TRUE, delete_mob = TRUE)
-	return ..()
-
-/obj/item/mob_holder/destructible/release(display_messages = TRUE, delete_mob = FALSE)
-	if(delete_mob && held_mob)
-		QDEL_NULL(held_mob)
-	return ..()
 

@@ -98,8 +98,6 @@
 				O.gen_amount_goal()
 				objectives += O
 				log_objective(owner, O.explanation_text)
-			else
-				break
 	var/datum/objective/O = new /datum/objective/survive()
 	O.owner = owner
 	objectives += O
@@ -133,7 +131,7 @@
 	. = ..()
 
 /datum/antagonist/ninja/admin_add(datum/mind/new_owner,mob/admin)
-	new_owner.assigned_role = ROLE_NINJA
+	new_owner.set_assigned_role(ROLE_NINJA)
 	new_owner.special_role = ROLE_NINJA
 	new_owner.add_antag_datum(src)
 	message_admins("[key_name_admin(admin)] has ninja'd [key_name_admin(new_owner)].")
@@ -150,4 +148,5 @@
 	set_antag_hud(ninja, null)
 
 /datum/objective/plant_explosive
+	name = "plant explosive"
 	var/area/detonation_location
