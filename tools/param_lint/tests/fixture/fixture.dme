@@ -1,0 +1,12 @@
+// Self-contained test environment for tools/param_lint.
+// Expected diagnostics are annotated in the .dm files with `// EXPECT: rule[*count], ...`
+// (`// EXPECT(extra): ...` only applies when PARAM_LINT_FIXTURE_EXTRA is defined).
+// `// OK(rule)` marks a deliberate passing case for that rule.
+
+// BEGIN_INCLUDE
+#include "_defines.dm"
+#include "types.dm"
+#include "definitions.dm"
+#include "calls.dm"
+#include "references.dm"
+// END_INCLUDE

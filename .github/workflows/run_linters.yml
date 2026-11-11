@@ -95,6 +95,13 @@ jobs:
         background: true
         run: tools/bootstrap/python -m trait_validity.check
 
+      - name: Check param lint
+        if: ${{ !cancelled() }}
+        background: true
+        run: |
+          tools/bootstrap/python -m param_lint.tests
+          tools/bootstrap/python -m param_lint.check --extra-pass CIBUILDING
+
       - name: Run DreamChecker
         if: ${{ !cancelled() }}
         background: true
