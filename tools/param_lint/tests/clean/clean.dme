@@ -1,0 +1,5 @@
+// A fixture environment with marked procs and only correct calls; param_lint must exit 0.
+
+// BEGIN_INCLUDE
+#include "clean.dm"
+// END_INCLUDE
